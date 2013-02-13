@@ -1,0 +1,1343 @@
+/*
+.titleCreate{
+    position: absolute;
+    z-index: 1;
+    background-color: #FFF;
+    bottom: 0;
+    left: 5px;
+    font-family: 'Droid Serif Italic';
+    font-size: 18px;
+    color: #9f7d45;
+    padding: 10px 15px 5px 15px;
+}
+
+.viewPort{
+    overflow: auto;
+    }
+    
+.pageHolder{
+    height: 596px;
+}
+
+.grayBar{
+    margin-top: 10px;
+    background-color: #f2f2f2;
+    height: 53px;
+    margin-bottom: 35px;
+}
+*/
+
+
+
+*:focus{outline: none;}
+
+@font-face {
+font-family: 'Lato Light';
+src: url('../fonts/lato-light-webfont.eot');
+src: url('../fonts/lato-light-webfont.eot?#iefix') format('embedded-opentype'),
+	/*url('../fonts/lato-light-webfont.woff') format('woff'),*/
+	url('http://rcc.pt/templates/fonts/lato-light-webfont.ttf') format('truetype'),
+	url('http://rcc.pt/templates/fonts/lato-light-webfont.svg#lato_lightregular') format('svg');
+font-weight: normal;
+font-style: normal;
+
+}
+
+@font-face {
+	font-family: 'Minion Italic';
+	src: url('../fonts/MinionPro-It.eot');
+	src: url('../fonts/MinionPro-It.eot?#iefix') format('embedded-opentype'),
+	/*url('../fonts/MinionPro-It.woff') format('woff'),*/
+	url('http://rcc.pt/templates/fonts/MinionPro-It.ttf') format('truetype'),
+	url('http://rcc.pt/templates/fonts/MinionPro-It.svg#MinionPro-It') format('svg');
+	font-weight: normal;
+	font-style: normal;
+
+}
+
+@font-face {
+font-family: 'Lato Regular';
+src: url('../fonts/lato-regular-webfont.eot');
+src: url('../fonts/lato-regular-webfont.eot?#iefix') format('embedded-opentype'),
+	/*url('../fonts/lato-regular-webfont.woff') format('woff'),*/
+	url('http://rcc.pt/templates/fonts/lato-regular-webfont.ttf') format('truetype'),
+	url('http://rcc.pt/templates/fonts/lato-regular-webfont.svg#latoregular') format('svg');
+font-weight: normal;
+font-style: normal;
+
+}
+
+@font-face {
+font-family: 'Droid Serif Bold-Italic';
+src: url('../fonts/droidserif-bolditalic-webfont.eot');
+src: url('../fonts/droidserif-bolditalic-webfont.eot?#iefix') format('embedded-opentype'),
+	/*url('../fonts/droidserif-bolditalic-webfont.woff') format('woff'),*/
+	url('http://rcc.pt/templates/fonts/droidserif-bolditalic-webfont.ttf') format('truetype'),
+	url('http://rcc.pt/templates/fonts/droidserif-bolditalic-webfont.svg#droid_serifbold_italic') format('svg');
+font-weight: normal;
+font-style: normal;
+
+}
+
+@font-face {
+font-family: 'Droid Serif Italic';
+src: url('../fonts/droidserif-italic-webfont.eot');
+src: url('../fonts/droidserif-italic-webfont.eot?#iefix') format('embedded-opentype'),
+	/*url('../fonts/droidserif-italic-webfont.woff') format('woff'),*/
+	url('http://rcc.pt/templates/fonts/droidserif-italic-webfont.ttf') format('truetype'),
+	url('http://rcc.pt/templates/fonts/droidserif-italic-webfont.svg#droid_serifitalic') format('svg');
+font-weight: normal;
+font-style: normal;
+
+}
+
+@font-face {
+font-family: 'Arial Black';
+src: url('../fonts/ariblk-webfont.eot');
+src: url('../fonts/ariblk-webfont.eot?#iefix') format('embedded-opentype'),
+	/*url('../fonts/ariblk-webfont.woff') format('woff'),*/
+	url('http://rcc.pt/templates/fonts/ariblk-webfont.ttf') format('truetype'),
+	url('http://rcc.pt/templates/fonts/ariblk-webfont.svg#arial_blackregular') format('svg');
+font-weight: normal;
+font-style: normal;
+
+}
+
+html {
+	height:100%;
+	margin:0;
+	padding:0;
+	overflow:auto;
+}
+body{
+	margin:0;
+	padding:0;
+	height:100%;
+	min-height:300px;
+}
+/*tiny*/
+.title1{
+	font-family:'Droid Serif Italic';
+	font-size:18px;
+	text-shadow: 1px 1px 10px #000000;
+	line-height:normal;
+}
+
+.title2{
+	font-family:'Droid Serif Italic';
+	font-size:22px;
+	text-transform:uppercase;
+	text-shadow: 1px 1px 10px #000000;
+	line-height:normal;
+}
+
+
+.contactostitle
+{
+	color: #ae956b;
+	font-family: 'Droid Serif Italic';
+	font-size: 18px;
+	padding-bottom: 20px;
+}
+
+a {outline: 0; text-decoration:none; color:#000;}
+
+
+input, textarea, select, option {font-family: 'MyriadProRegular', Arial, Helvetica, sans-serif; font-size: 14px;}
+
+strong, b {font-weight: bold;}
+
+.displayNone {
+	display: none;
+}
+
+.container{
+	width:980px;
+	margin:0 auto;
+}
+
+
+
+.topMenu{
+	width:100%;
+}
+
+.logoTopo {
+	margin-top:30px;
+	position:absolute;
+	float:left;
+}
+
+.redesLink{
+	display:block;
+	width:28px;
+	height:28px;
+	float:left;
+	margin-left:5px;
+}
+
+.redesLink:hover {
+	opacity:0.5;
+}
+
+.facebook{
+	background:transparent url(http://rcc.pt/templates/images/facebook.png) center center;
+}
+
+.thumbler{
+	background:transparent url(http://rcc.pt/templates/images/thumbler.png) center center;
+}
+
+.tweeter{
+	background:transparent url(http://rcc.pt/templates/images/tweeter.png) center center;
+}
+
+.topRightMenu{
+	float:right;
+	padding:8px;
+	border-left:1px solid #d6cab5;
+	border-bottom:1px solid #d6cab5;
+	border-right:1px solid #d6cab5;
+}
+
+.topRightMenu .firstWord, .topRightMenu .secondWord{
+	font-size: 13px !important;
+}
+
+.topRightMenu .selected, .topRightMenu a:hover{
+	color: #919191;
+}
+
+
+
+.menuTopo{
+	margin-top:25px;
+	position:relative;
+	float:right;
+}
+
+.menuTopoItem{
+	float:left;
+	margin-right:20px;
+	padding-left:10px;
+	background:transparent url(http://rcc.pt/templates/images/arrowMenu.png) left center no-repeat;
+}
+
+.menuHeaderItem{
+	float:left;
+	margin-right:20px;
+	padding-left:10px;
+	background:transparent url(../images/bolinha_small.png) left center no-repeat;
+	position: relative;
+	bottom: -5px;
+	left: 10px;
+}
+
+.firstItem{
+	margin-left:20px;
+}
+.preWord{
+	font-family:'Arial';
+	text-transform:none;
+}
+
+.menuTopoItem a{
+	font-family:'Droid Serif Bold-Italic';
+	font-size:14px;
+	text-transform:uppercase;
+	color:#5a5d63
+}
+
+.menuTopoItem a:hover, .menuTopoItem .selected{
+	color:#919191;
+}
+
+.boxMenu{
+	width:100%;
+	height:5px;
+	border-left:1px solid #d6cab5;
+	border-bottom:1px solid #d6cab5;
+	border-right:1px solid #d6cab5;
+	margin-top:15px;
+}
+
+.homeContainer{
+	margin-top:35px;
+}
+
+.blocoLeft{
+	float:left;
+}
+
+.blocoRight{
+	float:right;
+}
+
+.blocoCenter{
+	float: left;
+	margin-top: 54px;
+}
+
+.destaque1{
+
+	width:320px;
+	overflow:hidden;
+}
+
+
+.maskedImage{
+	position:relative;
+	height:277px;
+	z-index:0;
+}
+
+.maskedImage img{
+	position:absolute;
+	z-index:1;
+}
+
+.textoDestaque1{
+	display:block;
+	position:absolute;
+	z-index:2;
+	bottom:15px;
+	color:#FFF;
+	width:304px;
+	margin-left:20px;
+	text-shadow: 1px 1px 1px #000000;
+
+	/*filter: dropshadow(color=#ffffff, offx=0, offy=0);*/
+}
+
+.descricaoDestaque{
+	font-family: 'Droid Serif Italic';
+	font-size:12px;
+	width:275px;
+	margin-left:20px;
+	margin-top:20px;
+	color:#5a5d63;
+	letter-spacing:1px;
+	line-height:17px;
+	/*filter: dropshadow(color=#ffffff, offx=0, offy=0);*/
+}
+
+.topMask{
+	top:-2px;
+	left:-1px;
+	position:absolute;
+	z-index:3;
+	background:transparent url(http://rcc.pt/templates/images/mask.png) top left no-repeat;
+	width:91px;
+	height:91px;
+}
+
+.topRightLabel{
+	position:absolute;
+	z-index:3;
+	top:0;
+	right:0;
+	background-color:#FFF;
+	color:#896933;
+	font-size:14px;
+	font-family:'Droid Serif Italic';
+	font-weight:regular;
+	padding:15px;
+}
+
+.topRightLabel span{
+	font-family: 'Arial Black';
+	text-transform:uppercase;
+	font-weight:800;
+}
+
+.linkDestaque1 a{
+	font-family:'Droid Serif Bold-Italic';
+	font-size:12px;
+	color:#2d2f33;
+}
+
+.linkDestaque1{
+	background:transparent url(http://rcc.pt/templates/images/plus.png) left center no-repeat;
+	padding-left:20px;
+	margin-top:25px;
+}
+
+.destaque2{
+	width:320px;
+	overflow:hidden;
+	float:left;
+	margin-left:10px;
+}
+
+.destaque2 img{
+	position:absolute;
+	z-index:0;
+}
+
+.destaquethumb{
+	position:relative;
+	z-index:0;
+	height:210px;
+}
+
+.destaqueThumb img{
+	positiont:absolute;
+	z-index:1;
+}
+.textoDestaque2{
+	position:absolute;
+	bottom:15px;
+	color:#fff;
+	width:300px;
+	margin-right:15px;
+	text-align:right;
+}
+
+.destaque4{
+	margin-left:10px;
+	margin-top:10px;
+	height:354px;
+}
+.destaque4 img{
+	position:absolute;
+	z-index:0;
+}
+
+.howButton{
+	display:block;
+	width:650px;
+	height:354px;
+	background:transparent url(http://rcc.pt/templates/images/howButton.png) center center no-repeat;
+	position:absolute;
+	top:0;
+	z-index:3;
+}
+
+/* Glossary */
+
+.containerArrow
+{
+	margin-top: 30px;
+}
+
+.imgArrow{
+	text-align: center;
+}
+
+.imgArrowTop{
+	width:100%;
+	top:117px;
+	position:fixed;
+	z-index: 3;
+}
+
+.imgArrowBottom{
+	width:100%;
+	bottom:0;
+	position:fixed;
+	z-index: 3;
+}
+
+.topArrow{
+	display:block;
+	width:42px;
+	height:21px;
+	margin:0 auto;
+}
+
+.arrowUp{
+	background:transparent url(http://rcc.pt/templates/images/layout/seta_descendente.png) center center no-repeat;
+}
+
+.arrowDown{
+	background:transparent url(http://rcc.pt/templates/images/layout/seta_ascendente.png) center center no-repeat;
+
+}
+.grayBar
+{
+	margin-top: 10px;
+	background-color: #f2f2f2;
+	height: 53px;
+	margin-bottom:35px;
+}
+.grayBarTitle
+{
+	padding-top: 15px;
+	width: 980px;
+	margin: 0 auto;
+	color: #5a5d63;
+}
+
+.titleYourCustom, .titleYourFabrics{
+   /* position: absolute;*/
+    z-index: 1;
+    background-color: #FFF;
+    bottom: 0;
+    left: 5px;
+    font-family: 'Droid Serif Italic';
+    font-size: 18px;
+    color: #9f7d45;
+    padding: 10px 15px 5px 15px;
+    -moz-box-shadow:    2px 3px 5px -1px #ccc;
+    -webkit-box-shadow: 2px 3px 5px -1px #ccc;
+    box-shadow:         2px 3px 5px -1px #ccc;
+    margin-bottom: 20px;
+}
+
+.titleYourCustom{
+    width: 280px;
+}
+
+.titleYourFabrics{
+    width: 238px;
+}
+
+.firstWord
+{
+	font-size: 24px;
+	font-family: 'Arial';
+	font-weight: regular;
+	text-transform:none;
+}
+.secondWord
+{
+	font-size: 24px;
+	font-family: 'Droid Serif Bold-Italic';
+	text-transform:uppercase;
+
+}
+
+.glossaryCat{
+	float: left;
+	width: 310px;
+}
+
+.gcattitle{
+	font-size: 39px;
+	font-family: 'Droid Serif Italic';
+	color: #000000;
+	display:inline-block;
+	text-transform:uppercase;
+	float:left;
+	line-height:normal;
+}
+
+.gcattitle:hover, .selected {
+	color: #ae956b;
+}
+
+.glossaryElem{
+	float: left;
+	width: 640px;
+	height: 350px;
+	overflow: hide;
+	border-left: 1px solid #ae956b;
+	padding-left: 10px;
+	position:relative;
+}
+
+.lista_item{
+	width: 660px;
+	height: 350px;
+	overflow:hidden;
+	font-family: 'Droid Serif Italic';
+	font-size:12px;
+	letter-spacing:1px;
+	line-height:17px;
+	color:#5a5d63;
+	padding:5px 0;
+}
+
+.item{
+	padding-bottom: 25px;
+}
+
+.itemtitle
+{
+	color: #ae956b;
+	font-family: 'Droid Serif Italic';
+	font-size: 18px;
+	margin-top:25px;
+	line-height:normal;
+}
+
+.itemtitle:first-child{
+	margin-top:0;
+}
+
+.itemtxt
+{
+}
+
+#tabs{
+	padding: 0;
+}
+
+#tabs table{
+	border-spacing: 2px !important;
+	border-collapse: separate !important;
+}
+
+#tabs table img{
+	margin: 2px;
+}
+
+#tabs table img:hover{
+	outline: 2px solid #000;
+}
+
+.contenderLetras{
+	width: 310px;
+	padding-top: 5px;
+	margin: 0px;
+	padding: 0px;
+	color: #524949;
+	text-align: left;
+	letter-spacing:18px;
+	line-height:50px;
+}
+
+.letra {
+	width:50px;
+	height:60px;
+	line-height:60px;
+	float:left;
+	text-align:center;
+	text-transform:uppercase;
+}
+
+#tabs li a {
+}
+
+#Glossary{
+	width:290px;
+	height:200px;
+	overflow:hidden;
+}
+
+#Glossary li{
+	width:290px;
+	height:200px;
+	overflow:hidden;
+}
+
+
+
+.tabsConteudo{
+	top:0;
+	position:absolute;
+}
+
+/*our story*/
+
+.ourStory{
+	margin-left:-10px;
+}
+
+.itemOur{
+	float:right;
+	margin-left:10px;
+	position:relative;
+}
+
+.topoOur{
+	position:relative;
+	width:320px;
+	height:274px;
+	overflow:hidden;
+}
+
+.imageTopThumb{
+	position:absolute;
+	z-index:0;
+}
+
+.titleOur{
+	position:absolute;
+	z-index:1;
+	background-color:#FFF;
+	bottom:0;
+	left:5px;
+	font-family:'Droid Serif Italic';
+	font-size:18px;
+	color:#9f7d45;
+	padding:10px 15px 5px 15px;
+}
+
+.textOur{
+	font-family:'Droid Serif Italic';
+	font-size:12px;
+	margin-top:20px;
+	margin-left:15px;
+	width:290px;
+	height:195px;
+	color:#5a5d63;
+	overflow:hidden;
+	letter-spacing:1px;
+	line-height:17px;
+	padding:10px 0;
+
+}
+
+.mouseBlock{
+	pointer-events: none;
+}
+
+/* contactos */
+
+.contactoCol, .contactoCol a{
+	font-family:'Droid Serif Italic';
+	font-size:13px;
+	color:#5a5d63;
+	line-height:17px;
+	letter-spacing:1px;
+	float:left;
+}
+
+.contacto1{
+	width:220px;
+}
+.imgcontacto1{
+	margin-top:20px;
+	margin-left:-10px;
+}
+
+.contacto2{
+	width:284px;
+	padding:0 52px;
+	background:transparent url(http://rcc.pt/templates/images/linha1.png) top left no-repeat;
+}
+
+.costumer_contact{
+font-family: 'Droid Serif Italic';
+font-size: 13px;
+color: #5a5d63;
+line-height: 17px;
+letter-spacing: 1px;
+float: left;
+padding-left: 1px;
+}
+
+.textArea{
+	width:260px;
+	height:158px;
+	border: 1px #a2a2a2 solid;
+	color:#878787;
+	font-family:'Arial';
+	font-size:13px;
+	line-height:normal;
+	margin-bottom:5px;
+	padding:7px 10px;
+}
+
+.costumer_textArea{
+	width: 244px;
+	height: 288px;
+	border: 1px #ae956b solid;
+	color: #878787;
+	font-family: droid serif italic;
+	font-size: 13px;
+	line-height: normal;
+	margin-bottom: 5px;
+	padding: 7px 10px;
+}
+
+.costumerText{
+	height: 342px;
+	overflow: auto;
+}
+
+.butaoEnviar{
+	background: #a6a6a6; /* Old browsers */
+	background: -moz-linear-gradient(top, #a6a6a6 0%, #a6a6a6 0%, #a6a6a6 0%, #888888 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#a6a6a6), color-stop(0%,#a6a6a6), color-stop(0%,#a6a6a6), color-stop(100%,#888888)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #a6a6a6 0%,#a6a6a6 0%,#a6a6a6 0%,#888888 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #a6a6a6 0%,#a6a6a6 0%,#a6a6a6 0%,#888888 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #a6a6a6 0%,#a6a6a6 0%,#a6a6a6 0%,#888888 100%); /* IE10+ */
+	background: linear-gradient(to bottom, #a6a6a6 0%,#a6a6a6 0%,#a6a6a6 0%,#888888 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6a6a6', endColorstr='#888888',GradientType=0 ); /* IE6-9 */
+	border:none;
+	font-family:'Arial Black';
+	font-size:13px;
+	padding:6px 10px;
+	color:#FFFFFF;
+	margin:0;
+	cursor:pointer;
+}
+.imgcontacto2{
+	margin-top:10px;
+}
+
+
+
+#contactForm{
+	margin:20px 0;
+}
+
+.contacto3{
+	width:335px;
+	padding:35px 0 0 35px;
+	background:transparent url(http://rcc.pt/templates/images/linha2.png) top left no-repeat;
+}
+
+.inputText{
+	border:none;
+	background:#e3e3e4;
+	font-family:'Droid Serif Italic';
+	color:#525252;
+	padding:8px;
+	font-size:13px;
+
+}
+
+.imgcontacto3{
+	margin-top:56px;
+}
+
+/* we love */
+.leftWeLove{
+	width:615px;
+	height:460px;
+	float:left;
+	overflow:hidden;
+}
+.rightWeLove{
+	width:340px;
+	float:right;
+}
+
+.blogData{
+	font-family:'Arial';
+	font-size:12px;
+	color:#2d2f33;
+	line-height:normal;
+}
+
+.blogTitle{
+	font-family:'Droid Serif Italic';
+	font-size:18px;
+	color:#9f7d45;
+	line-height:normal;
+	margin-top:10px;
+}
+
+.blogText{
+	font-family:'Droid Serif Italic';
+	font-size:12px;
+	color:#5a5d63;
+	line-height:17px;
+	letter-spacing:1px;
+	margin:15px 0;
+	padding-right:10px;
+}
+
+.blogHashTags{
+	font-family:'Arial';
+	font-size:13px;
+	color:#c2af90;
+	line-height:normal;
+}
+
+/* behind the scenes */
+
+.imageContainer{
+
+	width:591px;
+	height:488px;
+	position:relative;
+	float:left;
+	z-index: 2;
+}
+
+.imageBehind{
+	width:591px;
+	height:488px;
+	overflow:hidden;
+	border:1px solid #d6d6d6;
+}
+
+.videoBall{
+	background:transparent url(http://rcc.pt/templates/images/watchVideo.png) center center no-repeat;
+	width:591px;
+	height:488px;
+	position:absolute;
+	top:0;
+	cursor:pointer;
+}
+
+.videoBehind{
+	position:absolute;
+	top:0;
+	width:980px;
+	height:490px;
+	background-color:#000;
+}
+
+.dragButton{
+	background:transparent url(http://rcc.pt/templates/images/dragButton.png) center right no-repeat;
+	width:607px;
+	height:488px;
+	position:absolute;
+	top:0;
+}
+
+.backVideo{
+	background:transparent url(http://rcc.pt/templates/images/backVideo.png) center center no-repeat;
+	width:33px;
+	height:100%;
+	position:absolute;
+	right:-389px;
+	top:0;
+	cursor:pointer;
+	z-index: 5;
+}
+
+.textContainer{
+	float:right;
+	width:345px;
+	height:488px;
+	position:relative;
+}
+
+.titleLabel{
+	font-family:'Droid Serif Italic';
+	font-size:18px;
+	color:#ae956b;
+	margin-bottom:20px;
+
+}
+
+.textBehind{
+	height:385px;
+	width:345px;
+	overflow:hidden;
+	font-family:'Droid Serif Italic';
+	font-size:12px;
+	color:#5a5d63;
+	line-height:17px;
+	letter-spacing:1px;
+	padding:5px 0;
+}
+
+.dowloadIcon{
+	background:transparent url(http://rcc.pt/templates/images/dowloadIcon.png) left bottom no-repeat;
+	padding-left:60px;
+	cursor:pointer;
+	height:27px;
+	position:absolute;
+	right:5px;
+	margin-top:35px;
+}
+
+.dowload1{
+	font-family:'Droid Serif Italic';
+	color:#5a5d63;
+	line-height:normal;
+	font-size:12px;
+
+}
+.dowload2{
+	font-family:'Droid Serif Italic';
+	color:#9f7d45;
+	line-height:normal;
+	font-size:15px;
+}
+
+.pageViewPort{
+	overflow:hidden;
+}
+
+.subViewPort{
+	overflow:auto;
+}
+
+.inputError{
+	border:1px solid #762828;
+}
+
+.underConstruction{
+	background:transparent url(http://rcc.pt/templates/images/underBack.png) left top;
+	width:115px;
+	padding:10px;
+	margin:0 auto;
+	font-family:'Droid Serif Italic';
+	font-size:12px;
+	color:#5a5d63;
+}
+
+.gradMaskTop{
+	background:transparent url(http://rcc.pt/templates/images/gradMaskTop.png) left top;
+	height:33px;
+	width:95%;
+	position:absolute;
+	z-index:1;
+}
+
+.gradMaskBottom{
+	background:transparent url(http://rcc.pt/templates/images/gradMask.png) left top;
+	height:33px;
+	width:95%;
+	position:absolute;
+	z-index:1;
+}
+
+.howWeDoItMask{
+	margin-top:20px
+}
+.howWeDoItMaskBottom{
+	bottom:48px;
+}
+
+.ourMaskingTop{
+	width:90%;
+	margin-top:5px;
+}
+
+.ourMaskingBottom{
+	width:90%;
+	bottom:-15px;
+}
+
+.glossaryMaskingTop{
+	width:99%;
+	margin-top:-19px;
+}
+
+.glossaryMaskingBottom{
+	width:99%;
+	bottom:-19px;
+}
+
+/* blog new things */
+.weLoveContainer{
+	position:relative;
+}
+.weLoveItem{
+	position:absolute;
+	top:0;
+	width:980px;
+	height:460px;
+	overflow:hidden;
+}
+
+.controlls{
+	margin-left:638px;
+	padding-top:400px;
+	z-index:10;
+	position:absolute;
+}
+
+.controlls div{
+	float:left;
+
+}
+
+.weArrow{
+	display:block;
+	width:34px;
+	height:39px;
+}
+.leftWe{
+	background:transparent url(http://rcc.pt/templates/images/leftWe.png) center center;
+	margin-right:15px;
+}
+
+.rightWe{
+	background:transparent url(http://rcc.pt/templates/images/rightWe.png) center center;
+	margin-left:15px;
+}
+
+.countText{
+	font-family:'Droid Serif Italic';
+	font-size:18px;
+	color:#2d2f33;
+	line-height:35px;
+}
+
+
+/*create your shirt*/
+.banner-nav{
+	margin-bottom: 30px;
+	font-family: 'arial';
+	font-size: 14px;
+}
+
+.banner-pager a:first-child{
+	margin-right:0px;
+	padding-left:0px;
+	position: relative;
+	background: none;
+	left: 0px;
+	height: 20px;
+	color: #919191;
+}
+
+.banner-pager a{
+	margin-right:20px;
+	padding-left:20px;
+	background:transparent url(../images/losango.png) left center no-repeat;
+	position: relative;
+	left: 20px;
+	height: 20px;
+	color: #919191;
+}
+
+.banner-pager a.pager-active,
+.banner-pager a:hover {
+    color: #000;
+    font-weight: bold;
+}
+
+
+
+
+.pieceTitle .ui-accordion-header .ui-helper-reset
+.ui-state-default .ui-accordion-icons
+.ui-accordion-header-active .ui-state-active .ui-corner-top{
+	background: #000 !important;
+}
+
+.adjust{
+	-moz-box-shadow:    2px 3px 5px -1px #ccc;
+	-webkit-box-shadow: 2px 3px 5px -1px #ccc;
+	box-shadow:         2px 3px 5px -1px #ccc;
+	display:-moz-inline-stack;
+	display:inline-block;
+	zoom:1;
+	*display:inline;
+	padding-right: 1em !important;
+	padding-left: 1em !important;
+}
+
+.adjust .ui-state-active{
+	border: 1px solid #000;
+}
+
+.basic{
+    width: 370px;
+    border: 1px solid black;
+}
+
+.basic div{
+    height: 100px;
+}
+
+.basic div .nav{
+	height: 0px;
+}
+
+
+.s2{
+	width: 286px;
+	margin-left: 14px;
+}
+
+
+.s2 table{
+	float: left;
+	text-align: center;
+}
+
+.prev2{
+	width: 29px !important;
+	float: left;
+	position: relative;
+	top: -56px;
+	left: -28px;
+}
+
+
+.next2{
+	position: relative;
+	float: right;
+	top: -56px;
+	right: -15px;
+	width: 20px !important;
+}
+
+.basic a {
+    width: 260px;
+}
+
+#acordion h3:hover{
+	color: #9f7d45;
+}
+
+
+/* Interaction states
+----------------------------------*/
+.ui-state-default,
+.ui-widget-content .ui-state-default,
+.ui-widget-header .ui-state-default {
+	border: 1px solid #d3d3d3;
+	background: #ffffff;
+	font-weight: normal;
+	color: #555555;
+}
+.ui-state-default a,
+.ui-state-default a:link{
+	color: #fff;
+	text-decoration: none;
+}
+
+.ui-state-default a:hover,
+.ui-state-active a{
+	color: #000 !important;
+	text-decoration: none;
+}
+
+
+.ui-state-hover,
+.ui-widget-content .ui-state-hover,
+.ui-widget-header .ui-state-hover,
+.ui-state-focus,
+.ui-widget-content .ui-state-focus,
+.ui-widget-header .ui-state-focus {
+	border: 1px solid #999999;
+	background: #ffffff;
+	font-weight: normal;
+	color: #9f7d45;
+}
+
+.ui-state-active,
+.ui-widget-content .ui-state-active,
+.ui-widget-header .ui-state-active {
+	border: 1px solid #aaaaaa;
+	background: #ffffff;
+	font-weight: normal;
+	color: #9f7d45;
+}
+
+.pieceSlider, #tabs{
+	font-family: arial;
+	font-size: 0.9em;
+}
+
+
+
+#tabs .ui-state-default{
+	background: #000000;
+}
+
+#tabs .ui-state-active{
+	background: #ffffff;
+}
+
+#tabs .ui-state-hover{
+	background: #ffffff !important;
+}
+
+.createContainer .blocoLeft{ 
+	width: 370px;
+}
+
+.costumerPage{
+	width: 320px;
+	margin-top: 0 !important;
+}
+
+.createContainer .blocoRight{
+	width: 268px;
+	position: relative;
+	right: 12px;
+
+}
+
+.blocoCenter_costumerPage, .blocoLeft_costumerPage{
+	float: left;
+	width: 290px;
+}
+
+.blocoRight_costumerPage{
+	width: 385px; 
+	position: relative;
+	float: right;
+	right: 1px;
+}
+
+.limitedMid{
+	margin-top: 40px;
+}
+
+.blocoLeft_RCC{
+	float: left;
+	width: 589px;
+	padding-right:36px;
+}
+
+
+li.pager{
+	width: 989px !important;
+}
+
+
+
+
+.list-slide{
+	height: 500px;
+}
+
+/*login*/
+
+.loginContainer fieldset{
+	margin: 20px 0;
+}
+
+.loginLeft{
+	width: 450px;
+}
+
+.titleLogin{
+	font-family:'Droid Serif Italic';
+	font-size:18px;
+	color:#9f7d45;
+	line-height:normal;
+	margin-top:10px;
+}
+
+.login_title{
+	font-family:'Droid Serif Italic';
+	font-size:12px;
+	color:#9f7d45;
+	line-height:normal;
+	margin-top:10px;
+}
+
+.login_text{
+	padding-left: 20px;
+	font-family:'Droid Serif Italic';
+	font-size:12px;
+	color:#919191;
+	line-height:normal;
+	margin-top:10px;
+}
+
+.login_input{
+	border: 1px #9f7d45 solid;
+}
+
+#loginEmail{
+	width: 222px;
+}
+
+#loginPassword{
+	width: 200px;
+}
+
+.loginLeft fieldset{
+	width: 360px;
+}
+
+.forgot{
+	font-size: 10px;
+	font-family: 'arial';
+	float: right;
+	margin-right: 10px;
+	margin-top: 4px;
+	color: #5a5d63;
+}
+
+.forgot:hover{
+	color: #919191;
+}
+
