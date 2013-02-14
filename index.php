@@ -53,7 +53,7 @@
         <script>
             $(function() {
               $( "#accordion" ).accordion(
-		{active:false, collapsible: true, heightStyle: "content"});
+				{active:false, collapsible: true, heightStyle: "content"});
             });
         </script>
 
@@ -62,9 +62,53 @@
 		var patTypes = {};
 		var dislayPeca = {};
 	</script>
+
 	<script>
         $(document).ready(function() {
 
+
+        $('.favSlider').bxSlider({
+        	mode:'fade',
+        	auto: false
+		});
+
+        //function insertCount(curr,count){
+		//	$('#slide-counter').html('<strong>'+ (curr + 1) +'</strong>/'+ count);
+		//};
+
+        var slideCart = $('.cartSlider').bxSlider({
+			  mode: 'fade',
+			  auto: false,
+			  adaptiveHeight: true,
+
+			onSliderLoad: function (){
+			var count = slideCart.getSlideCount();
+			var curr = slideCart.getCurrentSlide();
+			insertCount(curr,count);
+			$('#slide_counter').html(count);
+			},
+
+			onSlideNext: function (){
+			var count = slideCart.getSlideCount();
+			var curr = slideCart.getCurrentSlide();
+			insertCount(curr,count);
+			},
+			onSlidePrev: function (){
+			var count = slideCart.getSlideCount();
+			var curr = slideCart.getCurrentSlide();
+			insertCount(curr,count);
+			}
+
+
+
+			});
+
+			//var count = slideCart.getSlideCount();
+
+			//var curr = slideCart.getCurrentSlide();
+
+			//var count = slideCart.getSlideCount();
+			//var curr = slideCart.getCurrentSlide();
 
         //dropdown
          $('#nav li').hover(
@@ -110,12 +154,6 @@
         <script type="text/javascript">
             $.fn.cycle.defaults.timeout = 6000;
             $(function() {
-                // run the code in the markup!
-                /*$('table pre code').not('#skip,#skip2').each(function() {
-                    eval($(this).text());
-                });
-                */
-
                 $('.s2').cycle({
                         fx:     'fade',
                         speed:  'fast',
@@ -133,17 +171,10 @@
 
         <script>
 		$(function() {
-		  $( "#tabs" ).tabs();
+		  $("#tabs").tabs();
+		  $("#tabsMyRcc").tabs();
 		});
-	</script>
-
-	<!--colorbox-->
-
-	<script>
-	$(document).ready(function(){
-		//$(".group2").colorbox({rel:'group2', transition:"fade"});
-	});
-	</script>
+		</script>
 
 
         <script src="js/jquery-ui.js"></script><!--accordion-->
@@ -170,7 +201,12 @@
                     </div>
                     <div class="topRightMenu">
 
-                    <div class="menuHeaderItem item_my-login">
+                    	<div class="menuTopoItem menuHeaderItem item_my-rcc">
+                        	<a  href="javascript:void(0)" onClick="goToMenu('my-rcc')">
+                            <span class="firstWord">My</span><span class="secondWord"> RCC</span></a>
+                        </div>
+
+                    	<div class="menuTopoItem menuHeaderItem item_my-cart">
                         	<a  href="javascript:void(0)" onClick="goToMenu('my-cart')">
                             <span class="firstWord">My</span><span class="secondWord"> CART</span></a>
                         </div>
@@ -179,7 +215,7 @@
                         <a class="redesLink thumbler" href="#"></a>
                         <a class="redesLink facebook" href="#"></a>
 
-						<div class="menuHeaderItem item_my-login">
+						<div class="menuTopoItem menuHeaderItem item_my-login">
                         	<a  href="javascript:void(0)" onClick="goToMenu('my-login')">
                             <span class="firstWord">My</span><span class="secondWord"> LOGIN</span></a>
                         </div>
@@ -214,16 +250,17 @@
                     </div>
                     <script type="text/javascript">
 			var arrayPags = new Array();
-			arrayPags['#homepage']=0;
-                        arrayPags['#our-story']=1;
-                        arrayPags['#behind-the-scenes']=2;
-                        arrayPags['#we-love']=3;
-                        arrayPags['#the-glossary']=4;
-			arrayPags['#create-your-shirt']=5;
-                        arrayPags['#contact-us']=6;
-                        arrayPags['#my-cart']=7;
-			arrayPags['#my-login']=8;
-			var countPages = 9;
+				arrayPags['#homepage']=0;
+                arrayPags['#our-story']=1;
+                arrayPags['#behind-the-scenes']=2;
+                arrayPags['#we-love']=3;
+                arrayPags['#the-glossary']=4;
+				arrayPags['#create-your-shirt']=5;
+                arrayPags['#contact-us']=6;
+                arrayPags['#my-cart']=7;
+                arrayPags['#my-rcc']=8;
+				arrayPags['#my-login']=9;
+			var countPages = 10;
 		    </script>
                     <div class="clearer"></div>
                     <div class="boxMenu"></div>
@@ -821,9 +858,11 @@
 
 				<script>
 
+				/*
 				function testeTecido(str){
 					alert(str);
 				}
+				*/
 
 				function showTecido(str)
 				{
@@ -856,8 +895,6 @@
 
                         <div class="blocoRight">
                             <div class="titleYourFabrics">Your Fabrics</div>
-
-                            <!--<div id="txtHint"><b>Person info will be listed here.</b></div>-->
 
                             <div id="tabs">
                                 <ul>
@@ -942,9 +979,9 @@
                       function callColor(){
                       	$.colorbox({href:event.currentTarget.getAttribute('data-img')})
 					  }
-					                 //$("a.group2").on("click", function(event){
-					                 		//$.colorbox({href:event.currentTarget.getAttribute('data-img')})
-									 //});
+					     //$("a.group2").on("click", function(event){
+					     	//$.colorbox({href:event.currentTarget.getAttribute('data-img')})
+						 //});
 						</script>
 
                     </div>
@@ -1175,45 +1212,277 @@
 	                        </div>
 	                        <div class="conteudo">
 	                            <div class="container">
-	                                <div class="loginContainer">
+	                                <div class="cartContainer">
 	                                    <div class="cartLeft">
-											<span class="titleCart">My ACCOUNT </span>
+											<span class="big gold divTitle">My ACCOUNT </span>
 											<span class="cartText">profile</span>
 
 										<hr/>
 
-										<span class="gold big">Mr.</span>
-										<input class="clientData" type="text" readonly value="Miguel Figueiredo"/>
+										<img src="client/rcc_face.png"/>
 
+										<fieldset>
+											<span class="gold big">Mr.</span>
+											<input class="clientData big locked" type="text" readonly value="Miguel Figueiredo"/>
+										</fieldset>
+
+										<fieldset>
+											<span class="gold">My e-mail address:</span>
+											<input class="clientData locked" type="text" readonly value="emejkekje"/>
+										</fieldset>
+
+										<fieldset>
+											<span class="gold">Address Line:</span>
+											<input class="clientData locked" type="text" readonly value="emejkekje"/>
+										</fieldset>
+
+										<fieldset>
+											<span class="gold">Town/City:</span>
+											<input class="clientData locked" type="text" readonly value="emejkekje"/>
+										</fieldset>
+
+										<fieldset>
+											<span class="gold">Country:</span>
+											<input class="clientData locked" type="text" readonly value="emejkekje"/>
+										</fieldset>
+
+										<fieldset>
+											<span class="gold">Postcode:</span>
+											<input class="clientData locked" type="text" readonly value="emejkekje"/>
+										</fieldset>
+
+										<fieldset>
+											<span class="gold">Phone Number:</span>
+											<input class="clientData locked" type="text" readonly value="emejkekje"/>
+										</fieldset>
 										<!--Target text field: <input type="text" id="target" />-->
 										<br />
-										<a href="#" id="control" />Disable target</a>
+										<!--<a href="#" id="control" />Disable target</a>-->
+										<input type="button" class=" edit butaoEnviar fontLight white" value="EDIT"/>
+										<input type="button" class=" edit butaoEnviar fontLight" value="SAVE"/>
 
 					    				</div>
 					    				<script>
 
-					    				$("#control").toggle(
+					    				$(".edit").toggle(
 					    				function ()
 										{
 										    $('.clientData').removeAttr("readonly");
+										    $('.clientData').removeClass('locked').addClass('editable');
+
 
 										},
 										function ()
 										{
 										    $('.clientData').attr("readonly", true);
+										    $('.clientData').addClass('locked').removeClass('editable');
 										});
 										</script>
 
-									    <div class="cartRight">
+										<div class="cartCenter">
+												<div class="previewBorder">
+													<span class="previewTitle gold divTitle">Preview</span>
+													<hr/>
+													<ul class="cartSlider">
+													  <li><img src="preview/camisa1.png"/></li>
+													  <li><img src="preview/camisa2.png"/></li>
+													  <li><img src="preview/camisa3.png"/></li>
+													</ul>
+													<hr/>
+												</div>
+
+										<!--<span id="slide_counter"></span>-->
 
 										</div>
 
-
+										<div class="cartRight">
+											<span class="gold divTitle">Basket</span>
+											<hr/>
+											<p><span class="gold">Shirt's Name A: </span></p>
+											<p><span class="gold">Shirt's Name A: </span></p>
+											<p><span class="gold">Shirt's Name A: </span></p>
+											<hr/>
+											<span class="gold">Your Estimated Price: </span>
+										</div>
+										<div class="clearer"></div>
 									</div>
 				    			</div>
 							</div>
 		    			</div>
 					</div>
+
+
+			<div class="subViewPort">
+                    	<div class="pageHolder">
+	                        <div class="grayBar">
+	                            <div class="grayBarTitle">
+	                                <span class="firstWord">My</span>
+	                                <span class="secondWord">rcc</span>
+	                            </div>
+	                        </div>
+	                        <div class="conteudo">
+	                            <div class="container">
+	                                <div class="cartContainer">
+	                                    <div class="cartLeft">
+											<span class="big gold divTitle">My ACCOUNT </span>
+											<span class="cartText">profile</span>
+
+										<hr/>
+
+										<img src="client/rcc_face.png"/>
+
+										<fieldset>
+											<span class="gold big">Mr.</span>
+											<input class="clientData big locked" type="text" readonly value="Miguel Figueiredo"/>
+										</fieldset>
+
+										<fieldset>
+											<span class="gold">My e-mail address:</span>
+											<input class="clientData locked" type="text" readonly value="emejkekje"/>
+										</fieldset>
+
+										<fieldset>
+											<span class="gold">Address Line:</span>
+											<input class="clientData locked" type="text" readonly value="emejkekje"/>
+										</fieldset>
+
+										<fieldset>
+											<span class="gold">Town/City:</span>
+											<input class="clientData locked" type="text" readonly value="emejkekje"/>
+										</fieldset>
+
+										<fieldset>
+											<span class="gold">Country:</span>
+											<input class="clientData locked" type="text" readonly value="emejkekje"/>
+										</fieldset>
+
+										<fieldset>
+											<span class="gold">Postcode:</span>
+											<input class="clientData locked" type="text" readonly value="emejkekje"/>
+										</fieldset>
+
+										<fieldset>
+											<span class="gold">Phone Number:</span>
+											<input class="clientData locked" type="text" readonly value="emejkekje"/>
+										</fieldset>
+										<!--Target text field: <input type="text" id="target" />-->
+										<br />
+										<!--<a href="#" id="control" />Disable target</a>-->
+										<input type="button" class=" edit butaoEnviar fontLight white" value="EDIT"/>
+										<input type="button" class=" edit butaoEnviar fontLight" value="SAVE"/>
+
+					    				</div>
+					    				<script>
+
+					    				$(".edit").toggle(
+					    				function ()
+										{
+										    $('.clientData').removeAttr("readonly");
+										    $('.clientData').removeClass('locked').addClass('editable');
+
+
+										},
+										function ()
+										{
+										    $('.clientData').attr("readonly", true);
+										    $('.clientData').addClass('locked').removeClass('editable');
+										});
+										</script>
+
+											<div class="myListCenter">
+												<div class="previewBorder">
+
+													<div  id="tabsMyRcc">
+						                                <ul>
+						                                  <li><a href="#myFav">Your Favorites</a></li>
+						                                  <li><a href="#yourBought">Your Bought</a></li>
+						                                </ul>
+                                						<!--<div class="tabs_border">-->
+
+
+
+                        								<div id="myFav">
+
+	                        								<div class="camisaPreview">
+																<img src="products/camisa_list1.jpg" name="mainPic" class="mainImage" width="200px" height="200px">
+															</div>
+                    									</div>
+
+
+
+					                                    <div id="yourBought">
+					                                      <p>Morbi tincidunt, dui sit amet facilisis feugiat,
+					                                      odio metus gravida ante, ut pharetra massa.</p>
+					                                    </div>
+
+                                						<!--</div><!--fecha tabs_border-->
+						                                <!--<div class="coverBlock"></div>-->
+						                            </div><!--fecha tabs-->
+													<hr/>
+												</div>
+										</div>
+
+										<?php
+											$query_list = mysql_query('select * from product');
+
+											 $counter3 = 0;
+										?>
+
+
+										<div class="myListRight">
+											<span class="gold divTitle">Basket</span>
+											<hr/>
+
+											<div class="contentList">
+												<ul class="favSlider">
+
+												<?php
+													while($result_list = mysql_fetch_array($query_list))
+														{
+
+														if(($counter3 % 6) == 0){
+															echo "<li>";
+														}
+
+												?>
+
+													<a href="javascript:void(0)" onclick="changeImg('<?php echo $result_list['image'];?>')" >
+													<img src="<?php echo $result_list['image'];?>" width="90" height="90"/></a>
+
+
+
+												<?php
+
+														if ((($counter3 + 1)% 6) == 0)
+														{
+															echo "</li>";
+														}
+														$counter3 ++;
+
+
+													}
+												?>
+												</ul>
+											</div>
+
+											<script>
+											function changeImg(camisa){
+    											document.mainPic.src = camisa;
+    											return false;
+    										}
+											</script>
+
+											<hr/>
+
+										</div>
+										<div class="clearer"></div>
+									</div>
+				    			</div>
+							</div>
+		    			</div>
+					</div>
+
+
 
 
 	       <div class="subViewPort">
