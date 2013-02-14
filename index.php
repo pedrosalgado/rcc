@@ -53,21 +53,28 @@
         <script>
             $(function() {
               $( "#accordion" ).accordion(
-		{active:false, collapsible: true, heightStyle: "content"});
+		{active:false, collapsible: true});
             });
         </script>
 
 	<script>
 		var fabrics = {};
 		var patTypes = {};
-		var dislayPeca = {};
+		var dislayPeca = {}
 	</script>
 	<script>
         $(document).ready(function() {
+
+        $('.sliderPeca').bxSlider({
+		  mode: 'fade',
+		  auto: false,
+		  autoControls: true,
+		  pause: 2000
+		});
+
 		// assign the slider to a variable
 		var slider = $('#banner-slider').bxSlider({
 		    controls: false,
-		    adaptiveHeight: true,
 		    auto: false
 		});
 
@@ -105,10 +112,6 @@
                         fx:     'fade',
                         speed:  'fast',
                         timeout: 0,
-                        //fit: 1,
-                        //height: auto,
-                        //containerResize: 0,
-                        slideResize:   1,
                         next:   '.next2',
                         prev:   '.prev2'
                         });
@@ -154,22 +157,14 @@
                             <img src="http://www.rcc.pt/templates/images/logo-client.png" /></a>
                     </div>
                     <div class="topRightMenu">
-
-                    <div class="menuHeaderItem item_my-login">
-                        	<a  href="javascript:void(0)" onClick="goToMenu('my-cart')">
-                            <span class="firstWord">My</span><span class="secondWord"> CART</span></a>
-                        </div>
-
                         <a class="redesLink tweeter" href="#"></a>
                         <a class="redesLink thumbler" href="#"></a>
                         <a class="redesLink facebook" href="#"></a>
-
-						<div class="menuHeaderItem item_my-login">
-                        	<a  href="javascript:void(0)" onClick="goToMenu('my-login')">
+			<div class="menuHeaderItem item_my-login">
+                        <a  href="javascript:void(0)" onClick="goToMenu('my-login')">
                             <span class="firstWord">My</span><span class="secondWord"> LOGIN</span></a>
-                        </div>
-
-					</div>
+                    </div>
+                    </div>
                     <div class="clearer"></div>
                 </div>
                 <div class="menuTopo">
@@ -206,9 +201,8 @@
                         arrayPags['#the-glossary']=4;
 			arrayPags['#create-your-shirt']=5;
                         arrayPags['#contact-us']=6;
-                        arrayPags['#my-cart']=7;
-			arrayPags['#my-login']=8;
-			var countPages = 9;
+			arrayPags['#my-login']=7;
+			var countPages = 8;
 		    </script>
                     <div class="clearer"></div>
                     <div class="boxMenu"></div>
@@ -700,7 +694,7 @@
                     <span class="secondWord">YOUR SHIRT</span>
                 </div>
             </div>
-            <div class="conteudo createYour">
+            <div class="conteudo">
                 <div class="container">
                     <div class="createContainer">
 
@@ -748,7 +742,7 @@
                                         <h3 class="pieceTitle">
                                         <span class="adjust"><?php echo $result_tipoPeca['nomeTipoPeca']?></span>
                                         </h3>
-                                       <div>
+                                        <div>
                                             <div class="s2" class="pics">
                                             <?php
                                                 $query_pecas = mysql_query("Select * from peca
@@ -757,7 +751,7 @@
                                                 while($result_pecas = mysql_fetch_array($query_pecas)){
 
                                                     if(($counter2 % 3) == 0){
-                                                        echo "<div class='teste'>";
+                                                        echo "<div>";
                                                     }
                                             	?>
                                                     <table>
@@ -778,17 +772,9 @@
                                                         $counter2 ++;
                                                 }
                                             ?>
-
-                                            </div> <!--fecha o s2 -->
-                                            <div class="clearer"></div>
-                                            <div class="nav">
-                                            <a class="prev2" href="javascript:void(0)">Prev</a>
-                                            <a class="next2" href="javascript:void(0)">Next</a>
                                             </div>
-
-
-
-										</div>
+                                            <div class="nav"><a class="prev2" href="javascript:void(0)">Prev</a> <a class="next2" href="#">Next</a></div>
+                                        </div>
 
                                         <?php
                                         }
@@ -837,15 +823,20 @@
                                                 if (($counter % 3) == 0){
                                                     echo "<tr>";
                                                 }
-						?>
-						
+											?>
+                        <script>
+						function lightbox(image){
+							//alert (image);
+						  $(".group2").colorbox({width:"80%", height:"80%", iframe:true, href:image});
+
+						  //
+						}
+						</script>
+
+
                                                 <td>
-                                                <a id="<?php echo ('box' + $result_tecidos['idTecido']); ?>"
-								 class='group2' href='#create-your-shirt'
-								 data-img="<?php echo $result_tecidos['imageBig']; ?>">
-							<img src=" <?php echo ($result_tecidos['image']); ?>"
-									 width='74' height='74'
-									 /></a>
+                                                <a class='group2' href='#create-your-shirt' onclick='lightbox("<?php echo $result_tecidos['imageBig']; ?>")'>
+							<img src=" <?php echo ($result_tecidos['image']); ?> " width='74' height='74'/></a>
 						</td>
 
 						<?php
@@ -858,35 +849,6 @@
                                             }
 
                                             ?>
-						
-					<script>
-						$("a.group2").on("dblclick", function (event){
-							$.colorbox({href:event.currentTarget.getAttribute('data-img')})	
-						  //$(".group2").colorbox({width:"80%", height:"80%", iframe:true, href:image});
-						   //$(event.currentTarget).colorbox({href:event.target.getAttribute('data-img'), overlayClose: false});
-						   //event.stopImmediatePropagation();
-						   //return false;
-						});
-						//$(function(){
-						//	$('a.group2').map(function() {
-						//		var idImagem = $('#'+this.id);
-						//		idImagem.colorbox({href:idImagem.attr('data-img')});
-						//	      });
-						//});
-					//	$(document).on("a.group2", function (event){
-					//		alert (event.target.getAttribute(event));
-						  //$(".group2").colorbox({width:"80%", height:"80%", iframe:true, href:image});
-						   //$(event.currentTarget).colorbox({href:event.target.getAttribute('data-img'), overlayClose: false});
-						   //event.stopImmediatePropagation();
-						   //return false;
-					//	});
-						/*function lightbox(image){
-							//alert (image);
-						  //$(".group2").colorbox({width:"80%", height:"80%", iframe:true, href:image});
-						   $(".group2").colorbox({href:image, overlayClose: false});
-						}*/
-					</script>	
-						
                                       </table>
                                     </div>
                                     <div id="tabs-2">
@@ -1103,36 +1065,6 @@
 			</div>
 		</div>
 
-			       <div class="subViewPort">
-                    	<div class="pageHolder">
-	                        <div class="grayBar">
-	                            <div class="grayBarTitle">
-	                                <span class="firstWord">My</span>
-	                                <span class="secondWord">cart</span>
-	                            </div>
-	                        </div>
-	                        <div class="conteudo">
-	                            <div class="container">
-	                                <div class="loginContainer">
-	                                    <div class="cartLeft">
-											<span class="titleCart">My ACCOUNT </span>
-											<span class="cartText">profile</span>
-
-										<hr/>
-
-					    				</div>
-
-									    <div class="cartRight">
-
-										</div>
-
-
-									</div>
-				    			</div>
-							</div>
-		    			</div>
-					</div>
-
 
 	       <div class="subViewPort">
                     <div class="pageHolder">
@@ -1176,50 +1108,7 @@
 
 				    </div>
 
-				    <div class="loginRight">
-				    	<span class="titleLogin">Registration</span>
-					<br/>
-					<br/>
-					<span class="login_title">New to RCC.pt? Register Below</span>
-
-					<fieldset class="firstField">
-
-						<span class="login_text">My name is:</span>
-						<input class="login_input" id="registerName" type="text"/>
-					</fieldset>
-
-					<fieldset>
-						<span class="login_text">My email address is:</span>
-						<input class="login_input" id="registerEmail" type="text"/>
-					</fieldset>
-
-					<fieldset>
-						<span class="login_text">Type it again:</span>
-						<input class="login_input" id="registerEmailV" type="text"/>
-					</fieldset>
-
-
-					<div class="clearer"></div>
-					<br/>
-					<span class="login_title">Protect your information with a password</span><br/>
-					<span class="login_text">This will be your only RCC.pt password.</span>
-
-					<fieldset class="firstField">
-						<span class="login_text">Enter a new password:</span>
-						<input class="login_input" id="registerPassword" type="password"/>
-					</fieldset>
-
-					<fieldset>
-						<span class="login_text">Type it again:</span>
-						<input class="login_input" id="registerPasswordV" type="password"/>
-					</fieldset>
-
-					<div class="clearer"></div>
-					<fieldset>
-						<input class="butaoEnviar" type="button" value="CREATE ACCOUNT"/>
-					</fieldset>
-
-					</div>
+				    <div class="loginRight"></div>
 				    <div class="clearer"></div>
 
 				</div>
@@ -1233,9 +1122,6 @@
 
 		    </div>
 		</div>
-
-
-
 
 	    </div>
 <div class="arrowContender"><div class="imgArrowTop"><a href="javascript:void(0)" onClick="arrowClick('up')" class="topArrow arrowUp"></a></div><div class="imgArrowBottom"><a href="javascript:void(0)" onClick="arrowClick('down')" class="topArrow arrowDown"></a></div></div>
