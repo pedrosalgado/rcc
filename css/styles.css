@@ -1128,10 +1128,17 @@ padding-left: 1px;
 */
 
 
+.ui-accordion .ui-accordion-content{
+
+	/*display: inline-block;*/
+}
+
 .s2{
 	width: 286px;
 	margin-left: 14px;
 	/*height : 100%;*/
+	/*display: inline-block;*/
+
 }
 
 
@@ -1227,20 +1234,108 @@ padding-left: 1px;
 	width: 240px;
 }
 
-.filters a{
-	margin-right:25px;
+.filters input[type="button"]{
+	font-family: 'Droid Serif Italic';
+	font-size:11px;
 }
 
-.filters a:last-child{
+.filters a{
+	margin-right:5px;
+}
+
+.filters input[type="button"]{
+	margin-right:5px;
+}
+
+.filters a:last-child, .filters input[type="button"]:last-child{
 	margin: 0 !important;
 }
 
-.filters a:hover{
+.filters a:hover, .filters input[type="button"]:hover{
 	color: #9f7d45;
 }
 
+.filters input[type="button"]{
+	border: none;
+	background: transparent;
+	cursor: pointer;
+}
+
+/*Dorpdown*/
+
+#nav {
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+
+#nav li {
+	float:left;
+	width:70px;
+	background:#fff;
+	position:relative;
+	z-index:500;
+	margin:0 1px;
+}
+
+/* this is the parent menu */
+#nav li a {
+	padding:3px 0;
+	/*font-weight:700;*/
+	height:23px;
+	text-decoration:none;
+	color:#fff;
+	text-align:center;
+	color:#333;
+}
+
+#nav .mostPopular {
+	width: 90px !important;
+}
+
+.filhos{
+	height:10px;
+	padding:4px !important;
+	width:60px !important;
+}
+
+#nav li a:hover {
+	color:#9f7d45;
+}
+
+/* you can make a different style for default selected value */
+#nav a.selected {
+	color:#9f7d45;
+}
+
+/* submenu, it's hidden by default */
+#nav ul {
+	position:absolute;
+	left:0;
+	display:none;
+	margin:0 0 0 -1px;
+	padding:0;
+	list-style:none;
+}
+
+#nav ul li {
+	/*width:100px;*/
+	float:left;
+	border-top:1px solid #fff;
+}
+
+/* display block will make the link fill the whole area of LI */
+#nav ul a {
+	height:15px;
+	/*padding: 8px 5px;*/
+	color:#666;
+}
+
+
+/*end dropdown*/
+
 .jspcontainer{
-	height:100% !important;
+	/*height:100% !important;*/
 }
 
 .coverBlock{
@@ -1259,7 +1354,7 @@ padding-left: 1px;
 }
 
 #tabs{
-	height: 73%;
+	height: 60%;
 }
 
 #tabs .ui-state-default{
@@ -1301,6 +1396,7 @@ padding-left: 1px;
 	width: 370px;
 }
 
+
 .costumerPage{
 	width: 320px;
 	margin-top: 0 !important;
@@ -1310,7 +1406,13 @@ padding-left: 1px;
 	width: 268px;
 	position: relative;
 	right: 12px;
+	/*height: 900px;*/
+	height:100%;
 
+}
+
+.createYour{
+	height:78%;
 }
 
 .blocoCenter_costumerPage, .blocoLeft_costumerPage{
@@ -1338,6 +1440,7 @@ padding-left: 1px;
 
 li.pager{
 	width: 989px !important;
+	height:auto;
 }
 
 
@@ -1349,12 +1452,18 @@ li.pager{
 
 /*login*/
 
-.loginContainer fieldset{
+.loginLeft fieldset{
 	margin: 20px 0;
 }
 
 .loginLeft{
 	width: 450px;
+	float:left;
+}
+
+.loginRight{
+	width: 450px;
+	float:right;
 }
 
 .titleLogin{
@@ -1384,6 +1493,19 @@ li.pager{
 
 .login_input{
 	border: 1px #9f7d45 solid;
+	padding:3px;
+}
+
+.loginRight .login_input{
+	width: 270px;
+}
+
+.loginright .butaoEnviar{
+	margin-top: 6px;
+}
+
+.firstField{
+	margin-top:6px;
 }
 
 #loginEmail{
@@ -1396,6 +1518,19 @@ li.pager{
 
 .loginLeft fieldset{
 	width: 360px;
+}
+
+.loginLeft .butaoEnviar{
+	float:right;
+	margin-right:6px;
+}
+
+.loginRight fieldset {
+	float: right;
+}
+
+.loginRight fieldset span{
+	width: 100px;
 }
 
 .forgot{

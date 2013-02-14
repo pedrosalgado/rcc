@@ -53,28 +53,36 @@
         <script>
             $(function() {
               $( "#accordion" ).accordion(
-		{active:false, collapsible: true});
+		{active:false, collapsible: true, heightStyle: "content"});
             });
         </script>
 
 	<script>
 		var fabrics = {};
 		var patTypes = {};
-		var dislayPeca = {}
+		var dislayPeca = {};
 	</script>
 	<script>
         $(document).ready(function() {
 
-        $('.sliderPeca').bxSlider({
-		  mode: 'fade',
-		  auto: false,
-		  autoControls: true,
-		  pause: 2000
-		});
+
+        //dropdown
+         $('#nav li').hover(
+			function () {
+			$('ul', this).stop().slideDown(100);
+			},
+
+			function () {
+				$('ul', this).stop().slideUp(100);
+			}
+			);
+
+
 
 		// assign the slider to a variable
 		var slider = $('#banner-slider').bxSlider({
 		    controls: false,
+		    adaptiveHeight: true,
 		    auto: false
 		});
 
@@ -112,6 +120,10 @@
                         fx:     'fade',
                         speed:  'fast',
                         timeout: 0,
+                        //fit: 1,
+                        //height: auto,
+                        //containerResize: 0,
+                        slideResize:   1,
                         next:   '.next2',
                         prev:   '.prev2'
                         });
@@ -147,7 +159,7 @@
 
     <?php
         $query_tecidos = mysql_query("Select * from tecidos");
-        $query_tipoPeca = mysql_query("Select * from tipoPeca")
+        $query_tipoPeca = mysql_query("Select * from tipoPeca");
     ?>
         <div class="topMenu">
             <div class="container">
@@ -157,14 +169,22 @@
                             <img src="http://www.rcc.pt/templates/images/logo-client.png" /></a>
                     </div>
                     <div class="topRightMenu">
+
+                    <div class="menuHeaderItem item_my-login">
+                        	<a  href="javascript:void(0)" onClick="goToMenu('my-cart')">
+                            <span class="firstWord">My</span><span class="secondWord"> CART</span></a>
+                        </div>
+
                         <a class="redesLink tweeter" href="#"></a>
                         <a class="redesLink thumbler" href="#"></a>
                         <a class="redesLink facebook" href="#"></a>
-			<div class="menuHeaderItem item_my-login">
-                        <a  href="javascript:void(0)" onClick="goToMenu('my-login')">
+
+						<div class="menuHeaderItem item_my-login">
+                        	<a  href="javascript:void(0)" onClick="goToMenu('my-login')">
                             <span class="firstWord">My</span><span class="secondWord"> LOGIN</span></a>
-                    </div>
-                    </div>
+                        </div>
+
+					</div>
                     <div class="clearer"></div>
                 </div>
                 <div class="menuTopo">
@@ -201,8 +221,9 @@
                         arrayPags['#the-glossary']=4;
 			arrayPags['#create-your-shirt']=5;
                         arrayPags['#contact-us']=6;
-			arrayPags['#my-login']=7;
-			var countPages = 8;
+                        arrayPags['#my-cart']=7;
+			arrayPags['#my-login']=8;
+			var countPages = 9;
 		    </script>
                     <div class="clearer"></div>
                     <div class="boxMenu"></div>
@@ -694,7 +715,7 @@
                     <span class="secondWord">YOUR SHIRT</span>
                 </div>
             </div>
-            <div class="conteudo">
+            <div class="conteudo createYour">
                 <div class="container">
                     <div class="createContainer">
 
@@ -742,7 +763,7 @@
                                         <h3 class="pieceTitle">
                                         <span class="adjust"><?php echo $result_tipoPeca['nomeTipoPeca']?></span>
                                         </h3>
-                                        <div>
+                                       <div>
                                             <div class="s2" class="pics">
                                             <?php
                                                 $query_pecas = mysql_query("Select * from peca
@@ -751,7 +772,7 @@
                                                 while($result_pecas = mysql_fetch_array($query_pecas)){
 
                                                     if(($counter2 % 3) == 0){
-                                                        echo "<div>";
+                                                        echo "<div class='teste'>";
                                                     }
                                             	?>
                                                     <table>
@@ -772,9 +793,17 @@
                                                         $counter2 ++;
                                                 }
                                             ?>
+
+                                            </div> <!--fecha o s2 -->
+                                            <div class="clearer"></div>
+                                            <div class="nav">
+                                            <a class="prev2" href="javascript:void(0)">Prev</a>
+                                            <a class="next2" href="javascript:void(0)">Next</a>
                                             </div>
-                                            <div class="nav"><a class="prev2" href="javascript:void(0)">Prev</a> <a class="next2" href="#">Next</a></div>
-                                        </div>
+
+
+
+										</div>
 
                                         <?php
                                         }
@@ -790,67 +819,138 @@
                         </div>
 
 
+				<script>
+
+				function testeTecido(str){
+					alert(str);
+				}
+
+				function showTecido(str)
+				{
+				if (str=="")
+				  {
+				  document.getElementById("tabs-1").innerHTML="";
+				  return;
+				  }
+				if (window.XMLHttpRequest)
+				  {// code for IE7+, Firefox, Chrome, Opera, Safari
+				  xmlhttp=new XMLHttpRequest();
+				  }
+				else
+				  {// code for IE6, IE5
+				  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+				  }
+				xmlhttp.onreadystatechange=function()
+				  {
+				  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+				    {
+				    document.getElementById("tabs-1").innerHTML=xmlhttp.responseText;
+				    }
+				  }
+				xmlhttp.open("GET","getTecido.php?q="+str,true);
+				xmlhttp.send();
+				}
+
+				</script>
+
 
                         <div class="blocoRight">
                             <div class="titleYourFabrics">Your Fabrics</div>
+
+                            <!--<div id="txtHint"><b>Person info will be listed here.</b></div>-->
+
                             <div id="tabs">
                                 <ul>
                                   <li><a href="#tabs-1">MAIN</a></li>
                                   <li><a href="#tabs-2">CONTRASTS</a></li>
                                 </ul>
 
+								<?php
+								$query_padroes = mysql_query("Select * from padrao");
+								?>
+
                                 <div class="filters">
-                                    	<a href="#create-your-shirt">Most Popular</a>
-                                    	<a href="#create-your-shirt">View All</a>
-                                    	<a href="#create-your-shirt">Smart Filter</a>
+                                    	<ul id="nav">
+										<li class="mostPopular"><a href="javascript: void(0)" onclick="showTecido('popular')">Most Popular</a></li>
+                                    	<li><a href="javascript: void(0)" onclick="showTecido('all')">View All</a></li>
+
+											<li><a href="javascript: void(0)">Smart Filter</a>
+												<ul>
+												<?php
+													while($result_padroes = mysql_fetch_array($query_padroes))
+													{
+												?>
+													<li class="filhos">
+														<a href="javascript: void(0)" onclick="showTecido('<?php echo $result_padroes['0'];?>')">
+															<?php echo $result_padroes['nome'];?>
+														</a>
+													</li>
+												<?php
+													}
+												?>
+												</ul>
+												<div class="clearer"></div>
+
+											</li>
+                            			</ul>
+                                    	<!--
+                                    	<input type="button" value="Most Popular" onclick="showTecido('popular')"/>
+                                    	<input type="button" value="View All" onclick="showTecido('all')"/>
+                                    	<input type="button" value="Smart Filter" onclick="testeTecido(this.value)"/>
+                                    	-->
+
 									</div>
 
                                 <div class="tabs_border jscroll">
 
 
 
-                                    <div id="tabs-1">
+                        <div id="tabs-1">
 
-                                        <table>
+                        <table>
 
-                                            <?php
+                        <?php
 
-                                            $counter = 0;
+                            $counter = 0;
 
-                                            while ($result_tecidos = mysql_fetch_array($query_tecidos))
-                                            {
-
-                                                if (($counter % 3) == 0){
-                                                    echo "<tr>";
-                                                }
-											?>
-                        <script>
-						function lightbox(image){
-							//alert (image);
-						  $(".group2").colorbox({width:"80%", height:"80%", iframe:true, href:image});
-
-						  //
-						}
-						</script>
+                            while ($result_tecidos = mysql_fetch_array($query_tecidos))
+                            {
+                            	if (($counter % 3) == 0){
+                                echo "<tr>";
+                            }
+						?>
 
 
-                                                <td>
-                                                <a class='group2' href='#create-your-shirt' onclick='lightbox("<?php echo $result_tecidos['imageBig']; ?>")'>
-							<img src=" <?php echo ($result_tecidos['image']); ?> " width='74' height='74'/></a>
+                        <td>
+                        <a class='group2' href='#create-your-shirt' ondblclick="callColor()" data-img="<?php echo $result_tecidos['imageBig']; ?>">
+						<img src=" <?php echo ($result_tecidos['image']); ?> " width='74' height='74'/></a>
 						</td>
 
 						<?php
-                                                if ((($counter+1) % 3) == 0){
-                                                echo "</tr>";
-                                                }
+                            if ((($counter+1) % 3) == 0){
+                            echo "</tr>";
+                            }
 
-                                            $counter ++;
+                            $counter ++;
 
-                                            }
+                        }
 
-                                            ?>
-                                      </table>
-                                    </div>
+                        ?>
+                      </table>
+
+                      <script>
+                      function callColor(){
+                      	$.colorbox({href:event.currentTarget.getAttribute('data-img')})
+					  }
+					                 //$("a.group2").on("click", function(event){
+					                 		//$.colorbox({href:event.currentTarget.getAttribute('data-img')})
+									 //});
+						</script>
+
+                    </div>
+
+
+
                                     <div id="tabs-2">
                                       <p>Morbi tincidunt, dui sit amet facilisis feugiat,
                                       odio metus gravida ante, ut pharetra massa.</p>
@@ -1065,6 +1165,56 @@
 			</div>
 		</div>
 
+			       <div class="subViewPort">
+                    	<div class="pageHolder">
+	                        <div class="grayBar">
+	                            <div class="grayBarTitle">
+	                                <span class="firstWord">My</span>
+	                                <span class="secondWord">cart</span>
+	                            </div>
+	                        </div>
+	                        <div class="conteudo">
+	                            <div class="container">
+	                                <div class="loginContainer">
+	                                    <div class="cartLeft">
+											<span class="titleCart">My ACCOUNT </span>
+											<span class="cartText">profile</span>
+
+										<hr/>
+
+										<span class="gold big">Mr.</span>
+										<input class="clientData" type="text" readonly value="Miguel Figueiredo"/>
+
+										<!--Target text field: <input type="text" id="target" />-->
+										<br />
+										<a href="#" id="control" />Disable target</a>
+
+					    				</div>
+					    				<script>
+
+					    				$("#control").toggle(
+					    				function ()
+										{
+										    $('.clientData').removeAttr("readonly");
+
+										},
+										function ()
+										{
+										    $('.clientData').attr("readonly", true);
+										});
+										</script>
+
+									    <div class="cartRight">
+
+										</div>
+
+
+									</div>
+				    			</div>
+							</div>
+		    			</div>
+					</div>
+
 
 	       <div class="subViewPort">
                     <div class="pageHolder">
@@ -1108,7 +1258,50 @@
 
 				    </div>
 
-				    <div class="loginRight"></div>
+				    <div class="loginRight">
+				    	<span class="titleLogin">Registration</span>
+					<br/>
+					<br/>
+					<span class="login_title">New to RCC.pt? Register Below</span>
+
+					<fieldset class="firstField">
+
+						<span class="login_text">My name is:</span>
+						<input class="login_input" id="registerName" type="text"/>
+					</fieldset>
+
+					<fieldset>
+						<span class="login_text">My email address is:</span>
+						<input class="login_input" id="registerEmail" type="text"/>
+					</fieldset>
+
+					<fieldset>
+						<span class="login_text">Type it again:</span>
+						<input class="login_input" id="registerEmailV" type="text"/>
+					</fieldset>
+
+
+					<div class="clearer"></div>
+					<br/>
+					<span class="login_title">Protect your information with a password</span><br/>
+					<span class="login_text">This will be your only RCC.pt password.</span>
+
+					<fieldset class="firstField">
+						<span class="login_text">Enter a new password:</span>
+						<input class="login_input" id="registerPassword" type="password"/>
+					</fieldset>
+
+					<fieldset>
+						<span class="login_text">Type it again:</span>
+						<input class="login_input" id="registerPasswordV" type="password"/>
+					</fieldset>
+
+					<div class="clearer"></div>
+					<fieldset>
+						<input class="butaoEnviar" type="button" value="CREATE ACCOUNT"/>
+					</fieldset>
+
+					</div>
 				    <div class="clearer"></div>
 
 				</div>
@@ -1122,6 +1315,9 @@
 
 		    </div>
 		</div>
+
+
+
 
 	    </div>
 <div class="arrowContender"><div class="imgArrowTop"><a href="javascript:void(0)" onClick="arrowClick('up')" class="topArrow arrowUp"></a></div><div class="imgArrowBottom"><a href="javascript:void(0)" onClick="arrowClick('down')" class="topArrow arrowDown"></a></div></div>

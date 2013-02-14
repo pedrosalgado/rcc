@@ -1,0 +1,110 @@
+<!DOCTYPE>
+<html>
+<head>
+
+<script type="text/javascript" src="http://www.rcc.pt/templates/js/jquery-1.7.2.min.js"></script>
+
+</head>
+<body>
+
+	<ul id="nav">
+										<li><a href="javascript: void(0)" onclick="testeTecido('')">Smart Filter</a>
+											<ul>
+												<li><a href="">filho1</a></li>
+												<li><a href="">filho2</a></li>
+											</ul>
+											<div class="clearer"></div>
+
+										</li>
+                            </ul>
+
+<div class="clear"></div>
+
+<script>
+	$(document).ready(function () {
+
+	    $('#nav li').hover(
+	        function () {
+	            //show its submenu
+	            $('ul', this).stop().slideDown(100);
+	        },
+	        function () {
+	            //hide its submenu
+	            $('ul', this).stop().slideUp(100);
+	        }
+	    );
+	});
+</script>
+
+<style type="text/css">
+
+/* remove the list style */
+#nav {
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+
+/* make the LI display inline */
+/* it's position relative so that position absolute */
+/* can be used in submenu */
+#nav li {
+	float:left;
+	display:block;
+	width:100px;
+	background:#ccc;
+	position:relative;
+	z-index:500;
+	margin:0 1px;
+}
+
+/* this is the parent menu */
+#nav li a {
+	display:block;
+	padding:8px 5px 0 5px;
+	font-weight:700;
+	height:23px;
+	text-decoration:none;
+	color:#fff;
+	text-align:center;
+	color:#333;
+}
+
+#nav li a:hover {
+	color:#fff;
+}
+
+/* you can make a different style for default selected value */
+#nav a.selected {
+	color:#f00;
+}
+
+/* submenu, it's hidden by default */
+#nav ul {
+	position:absolute;
+	left:0;
+	display:none;
+	margin:0 0 0 -1px;
+	padding:0;
+	list-style:none;
+}
+
+#nav ul li {
+	width:100px;
+	float:left;
+	border-top:1px solid #fff;
+}
+
+/* display block will make the link fill the whole area of LI */
+#nav ul a {
+	display:block;
+	height:15px;
+	padding: 8px 5px;
+	color:#666;
+}
+
+</style>
+
+
+</body>
+</html>
