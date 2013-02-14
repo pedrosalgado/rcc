@@ -14,7 +14,7 @@
 .viewPort{
     overflow: auto;
     }
-    
+
 .pageHolder{
     height: 596px;
 }
@@ -1112,7 +1112,7 @@ padding-left: 1px;
 .adjust .ui-state-active{
 	border: 1px solid #000;
 }
-
+/*
 .basic{
     width: 370px;
     border: 1px solid black;
@@ -1125,11 +1125,20 @@ padding-left: 1px;
 .basic div .nav{
 	height: 0px;
 }
+*/
 
+
+.ui-accordion .ui-accordion-content{
+
+	/*display: inline-block;*/
+}
 
 .s2{
 	width: 286px;
 	margin-left: 14px;
+	/*height : 100%;*/
+	/*display: inline-block;*/
+
 }
 
 
@@ -1213,7 +1222,52 @@ padding-left: 1px;
 	font-size: 0.9em;
 }
 
+.filters{
+	position: absolute;
+	z-index: 10;
+	background: #fff;
+	margin-left: 6px;
+	padding: 14px 14px 6px 6px;
+	margin-bottom:4px;
+	font-family:'Droid Serif Italic';
+	font-size:11px;
+	width: 240px;
+}
 
+.filters a{
+	margin-right:25px;
+}
+
+.filters a:last-child{
+	margin: 0 !important;
+}
+
+.filters a:hover{
+	color: #9f7d45;
+}
+
+.jspcontainer{
+	/*height:100% !important;*/
+}
+
+.coverBlock{
+	background: #fff;
+	position: absolute;
+	display: block;
+	z-index: 10;
+	width: 92%;
+	height: 11px;
+	bottom: 0px;
+	margin-left:1px;
+/*	box-shadow: 0px 10px 5px #888, 0px -10px 5px #888;
+	-moz-box-shadow:    0px 3px 5px #ccc, 0px -3px 5px  #ccc ;
+	-webkit-box-shadow: 0px 3px 5px #ccc, 0px -3px 5px  #ccc ;
+	box-shadow:         0px 3px 5px #ccc, 0px -3px 5px  #ccc;*/
+}
+
+#tabs{
+	height: 60%;
+}
 
 #tabs .ui-state-default{
 	background: #000000;
@@ -1227,7 +1281,30 @@ padding-left: 1px;
 	background: #ffffff !important;
 }
 
-.createContainer .blocoLeft{ 
+.autoPriceText, .autoPriceButton{
+	float:right;
+}
+
+.autoPriceText{
+	display:block;
+	text-align:right;
+	font-family:'Droid Serif Italic';
+	margin:20px 0;
+}
+
+.estimatedText{
+	color: #9f7d45;
+}
+
+.fontLight{
+	font-family:'arial' !important;
+}
+
+.colorGold{
+	background: #9f7d45 !important;
+}
+
+.createContainer .blocoLeft{
 	width: 370px;
 }
 
@@ -1240,8 +1317,16 @@ padding-left: 1px;
 	width: 268px;
 	position: relative;
 	right: 12px;
+	/*height: 900px;*/
+	height:100%;
 
 }
+
+.createYour{
+	height:78%;
+}
+
+
 
 .blocoCenter_costumerPage, .blocoLeft_costumerPage{
 	float: left;
@@ -1249,7 +1334,7 @@ padding-left: 1px;
 }
 
 .blocoRight_costumerPage{
-	width: 385px; 
+	width: 385px;
 	position: relative;
 	float: right;
 	right: 1px;
@@ -1268,23 +1353,30 @@ padding-left: 1px;
 
 li.pager{
 	width: 989px !important;
+	height:auto;
 }
 
 
 
 
 .list-slide{
-	height: 500px;
+	height: 100%;
 }
 
 /*login*/
 
-.loginContainer fieldset{
+.loginLeft fieldset{
 	margin: 20px 0;
 }
 
 .loginLeft{
 	width: 450px;
+	float:left;
+}
+
+.loginRight{
+	width: 450px;
+	float:right;
 }
 
 .titleLogin{
@@ -1314,6 +1406,19 @@ li.pager{
 
 .login_input{
 	border: 1px #9f7d45 solid;
+	padding:3px;
+}
+
+.loginRight .login_input{
+	width: 270px;
+}
+
+.loginright .butaoEnviar{
+	margin-top: 6px;
+}
+
+.firstField{
+	margin-top:6px;
 }
 
 #loginEmail{
@@ -1326,6 +1431,19 @@ li.pager{
 
 .loginLeft fieldset{
 	width: 360px;
+}
+
+.loginLeft .butaoEnviar{
+	float:right;
+	margin-right:6px;
+}
+
+.loginRight fieldset {
+	float: right;
+}
+
+.loginRight fieldset span{
+	width: 100px;
 }
 
 .forgot{

@@ -15,68 +15,68 @@
 	<meta name="expires" content="never" />
 	<meta http-equiv="Pragma" content="no-cache" />
 	<meta http-equiv="expires" content="0" />
-        
-        
-	<link rel="stylesheet" href="css/resets.css" />
-        <link rel="stylesheet" href="css/jquery.jscrollpane.css" />
-        <link rel="stylesheet" href="css/bx_styles/bx_styles2.css" />
-        <link rel="stylesheet" href="css/fancybox/fancybox.css" />
+
+
+	<link rel="stylesheet" href="http://www.rcc.pt/templates/css/resets.css" />
+        <link rel="stylesheet" href="http://www.rcc.pt/templates/css/jquery.jscrollpane.css" />
+        <link rel="stylesheet" href="http://www.rcc.pt/templates/css/bx_styles/bx_styles2.css" />
+        <link rel="stylesheet" href="http://www.rcc.pt/templates/css/fancybox/fancybox.css" />
         <!--<link rel="stylesheet" href="http://www.rcc.pt/templates/css/styles.css" />-->
         <link rel="stylesheet" href="css/styles.css" type="text/css" />
 	<link rel="stylesheet" href="css/tabs.css" type="text/css" />
 	<link rel="stylesheet" href="css/colorbox.css" />
-	
-        
+
+
         <link rel="shortchut icon" href="http://www.rcc.pt/templates/images/favicon.png" />
-        
+
         <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>-->
-        <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
-        <script type="text/javascript" src="js/mwheelIntent.js"></script>
-        <script type="text/javascript" src="js/jquery.mousewheel.js"></script>
-        <script type="text/javascript" src="js/jquery.jscrollpane.min.js"></script>
-        <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
-        <script type="text/javascript" src="js/jquery.bxSlider.min.js"></script>
-        <script type="text/javascript" src="js/jquery.fancybox-1.3.4.pack.js"></script>
-        <script type="text/javascript" src="js/jquery.clearinput.js"></script>
-        <!--<script type="text/javascript" src="http://www.rcc.pt/frontend/site/langs/en.js"></script>-->
-        <script type="text/javascript" src="js/interface.js"></script>
-        <script type="text/javascript" src="http://malsup.github.com/chili-1.7.pack.js"></script>
-        <script type="text/javascript" src="http://malsup.github.com/jquery.cycle.all.js"></script>
+        <script type="text/javascript" src="http://www.rcc.pt/templates/js/jquery-1.7.2.min.js"></script>
+        <script type="text/javascript" src="http://www.rcc.pt/templates/js/mwheelIntent.js"></script>
+        <script type="text/javascript" src="http://www.rcc.pt/templates/js/jquery.mousewheel.js"></script>
+        <script type="text/javascript" src="http://www.rcc.pt/templates/js/jquery.jscrollpane.min.js"></script>
+        <script type="text/javascript" src="http://www.rcc.pt/templates/js/jquery.easing.1.3.js"></script>
+        <script type="text/javascript" src="http://www.rcc.pt/templates/js/jquery.bxSlider.min.js"></script>
+        <script type="text/javascript" src="http://www.rcc.pt/templates/js/jquery.fancybox-1.3.4.pack.js"></script>
+        <script type="text/javascript" src="http://www.rcc.pt/templates/js/jquery.clearinput.js"></script>
+        <script type="text/javascript" src="http://www.rcc.pt/frontend/site/langs/en.js"></script>
+        <script type="text/javascript" src="http://www.rcc.pt/templates/js/interface.js"></script>
+        <script type="text/javascript" src="js/chili-1.7.pack.js"></script>
+        <script type="text/javascript" src="js/jquery.cycle.all.js"></script>
 	<script src="js/jquery.colorbox.js"></script>
-        
+
         <script type="text/javascript">
 		var host = "http://www.rcc.pt";
 		var lang = "en";
 	</script>
-        
-        
+
+
         <script>
             $(function() {
               $( "#accordion" ).accordion(
-		{active:false, collapsible: true});
+		{active:false, collapsible: true, heightStyle: "content"});
             });
         </script>
-	
+
 	<script>
 		var fabrics = {};
 		var patTypes = {};
-		var dislayPeca = {}
+		var dislayPeca = {};
 	</script>
 	<script>
         $(document).ready(function() {
-
 		// assign the slider to a variable
 		var slider = $('#banner-slider').bxSlider({
 		    controls: false,
+		    adaptiveHeight: true,
 		    auto: false
 		});
-	    
+
 		// assign a click event to the external thumbnails
 		$('.banner-pager a').click(function() {
 		    var thumbIndex = $('..banner-pager a').index(this);
 		    // call the "goToSlide" public function
 		    slider.goToSlide(thumbIndex);
-	    
+
 		    // remove all active classes
 		    $('.banner-pager a').removeClass('pager-active');
 		    // assisgn "pager-active" to clicked thumb
@@ -84,14 +84,14 @@
 		    // kill the links default behavior
 		    return false;
 		});
-	    
+
 		// assign "pager-active" class to the first thumb
 		$('.banner-pager a:first').addClass('pager-active');
-	    
+
 	    });
-	
+
 	</script>
-        
+
         <script type="text/javascript">
             $.fn.cycle.defaults.timeout = 6000;
             $(function() {
@@ -100,35 +100,39 @@
                     eval($(this).text());
                 });
                 */
-                
+
                 $('.s2').cycle({
                         fx:     'fade',
                         speed:  'fast',
                         timeout: 0,
+                        //fit: 1,
+                        //height: auto,
+                        //containerResize: 0,
+                        slideResize:   1,
                         next:   '.next2',
                         prev:   '.prev2'
                         });
                 });
         </script>
-    
-    
+
+
         <script>
 		$(function() {
 		  $( "#tabs" ).tabs();
 		});
 	</script>
-	
+
 	<!--colorbox-->
-	
+
 	<script>
 	$(document).ready(function(){
 		//$(".group2").colorbox({rel:'group2', transition:"fade"});
 	});
 	</script>
-	
-        
-        <script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script><!--accordion-->
-        
+
+
+        <script src="js/jquery-ui.js"></script><!--accordion-->
+
 	<!--[if gte IE 9]>
 	<style type="text/css">
 	.gradient {filter: none;}
@@ -137,7 +141,7 @@
 	<![endif]-->
 </head>
 <body>
-    
+
     <?php
         $query_tecidos = mysql_query("Select * from tecidos");
         $query_tipoPeca = mysql_query("Select * from tipoPeca")
@@ -150,14 +154,22 @@
                             <img src="http://www.rcc.pt/templates/images/logo-client.png" /></a>
                     </div>
                     <div class="topRightMenu">
+
+                    <div class="menuHeaderItem item_my-login">
+                        	<a  href="javascript:void(0)" onClick="goToMenu('my-cart')">
+                            <span class="firstWord">My</span><span class="secondWord"> CART</span></a>
+                        </div>
+
                         <a class="redesLink tweeter" href="#"></a>
                         <a class="redesLink thumbler" href="#"></a>
                         <a class="redesLink facebook" href="#"></a>
-			<div class="menuHeaderItem item_my-login">
-                        <a  href="javascript:void(0)" onClick="goToMenu('my-login')">
+
+						<div class="menuHeaderItem item_my-login">
+                        	<a  href="javascript:void(0)" onClick="goToMenu('my-login')">
                             <span class="firstWord">My</span><span class="secondWord"> LOGIN</span></a>
-                    </div>
-                    </div>
+                        </div>
+
+					</div>
                     <div class="clearer"></div>
                 </div>
                 <div class="menuTopo">
@@ -194,8 +206,9 @@
                         arrayPags['#the-glossary']=4;
 			arrayPags['#create-your-shirt']=5;
                         arrayPags['#contact-us']=6;
-			arrayPags['#my-login']=7;
-			var countPages = 8;
+                        arrayPags['#my-cart']=7;
+			arrayPags['#my-login']=8;
+			var countPages = 9;
 		    </script>
                     <div class="clearer"></div>
                     <div class="boxMenu"></div>
@@ -403,15 +416,15 @@
 				</div>
 			    </div>
 			</div>
-			
+
 			<script type="text/javascript">
 				setPostInit('0');
 				numPosts=2
 			</script>
-			
+
 		    </div>
 		</div>
-		
+
 		<div class="subViewPort">
 			<div class="pageHolder">
 				<div class="grayBar">
@@ -678,7 +691,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 	<div class="subViewPort">
         <div class="pageHolder">
             <div class="grayBar">
@@ -687,59 +700,66 @@
                     <span class="secondWord">YOUR SHIRT</span>
                 </div>
             </div>
-            <div class="conteudo">
+            <div class="conteudo createYour">
                 <div class="container">
                     <div class="createContainer">
 
 	<div id="banner">
-            
+
                 <div class="banner-nav">
-            
+
                     <div class="banner-pager">
                       <a href="">CREATE YOUR SHIRT</a>
                       <a href="">COSTUMER SERVICE</a>
                       <a href="">LIMITED EDITIONS</a>
                       <a href="">RCC EXPERIENCE</a>
                     </div>
-                    
+
                 </div>
-                
+
                 <div class="banner-wrap">
-                
+
                     <ul id="banner-slider">
-                    
+
                         <li class="list-slide">
                             <div class="banner-slide">
 				<!--Start of create your shirt-->
-				
+
 			<div class="blocoLeft">
                         <div class="titleYourCustom">Your custom Shirt</div>
                         <div class="pieceSlider">
                             <form action="">
-                                <div id="accordion" class=" basic slider">                                    
-                                        <?php
-                                        
+                                <div id="accordion" class=" basic slider">
+                               <!--
+                                <ul class="sliderPeca">
+								  <li>um lojerwadfsipoj ipsjadfij</li>
+								  <li>dois lkjewfdsj ljasdfk lisjdf</li>
+								  <li>tres lkjdfs lkjafsd </li>
+								</ul>
+								-->
+                                  <?php
+
                                         $counter2 = 0;
-                                        
+
                                         while ($result_tipoPeca = mysql_fetch_array($query_tipoPeca))
                                         {
                                         ?>
-                                        
+
                                         <h3 class="pieceTitle">
                                         <span class="adjust"><?php echo $result_tipoPeca['nomeTipoPeca']?></span>
-                                        </h3> 
-                                        <div>
+                                        </h3>
+                                       <div>
                                             <div class="s2" class="pics">
                                             <?php
                                                 $query_pecas = mysql_query("Select * from peca
                                                             where idTipoPeca = ".$result_tipoPeca['idTipoPeca']."");
-                                                
+
                                                 while($result_pecas = mysql_fetch_array($query_pecas)){
-                                            
+
                                                     if(($counter2 % 3) == 0){
-                                                        echo "<div>";
+                                                        echo "<div class='teste'>";
                                                     }
-                                            ?>
+                                            	?>
                                                     <table>
                                                         <tr>
                                                             <td><input type="radio" name="peca" onchange=""/>
@@ -748,8 +768,8 @@
                                                             <br/>
                                                             <?php echo $result_pecas['nomePeca']; ?></td>
                                                         </tr>
-                                                    </table>    
-                                                      
+                                                    </table>
+
                                             <?php
                                                     if ((($counter2 + 1)% 3) == 0)
                                                     {
@@ -758,25 +778,33 @@
                                                         $counter2 ++;
                                                 }
                                             ?>
+
+                                            </div> <!--fecha o s2 -->
+                                            <div class="clearer"></div>
+                                            <div class="nav">
+                                            <a class="prev2" href="javascript:void(0)">Prev</a>
+                                            <a class="next2" href="javascript:void(0)">Next</a>
                                             </div>
-                                            <div class="nav"><a class="prev2" href="javascript:void(0)">Prev</a> <a class="next2" href="#">Next</a></div>
-                                        </div>
-                                        
+
+
+
+										</div>
+
                                         <?php
                                         }
                                         ?>
-                                        
+
                                 </div><!-- acodrion-->
                                 </form>
                         </div><!--pieceslider-->
                         </div><!-- blocoLeft-->
-                        
+
                         <div class="blocoCenter">
-                            <img src="images/camisa.png" width="300"/>
+                            <img src="images/camisa.png" width="330"/>
                         </div>
-                        
-                        
-                        
+
+
+
                         <div class="blocoRight">
                             <div class="titleYourFabrics">Your Fabrics</div>
                             <div id="tabs">
@@ -784,62 +812,106 @@
                                   <li><a href="#tabs-1">MAIN</a></li>
                                   <li><a href="#tabs-2">CONTRASTS</a></li>
                                 </ul>
-                                
+
+                                <div class="filters">
+                                    	<a href="#create-your-shirt">Most Popular</a>
+                                    	<a href="#create-your-shirt">View All</a>
+                                    	<a href="#create-your-shirt">Smart Filter</a>
+									</div>
+
                                 <div class="tabs_border jscroll">
+
+
+
                                     <div id="tabs-1">
-					<!--<a class="group2" href="../content/ohoopee1.jpg" title="Me and my grandfather on the Ohoopee">Grouped Photo 1</a>-->
+
                                         <table>
-                                            
+
                                             <?php
-                                            
+
                                             $counter = 0;
-                                            
+
                                             while ($result_tecidos = mysql_fetch_array($query_tecidos))
                                             {
-                                                
+
                                                 if (($counter % 3) == 0){
                                                     echo "<tr>";
                                                 }
 						?>
-                                                <script>
-						function lightbox(image){
-							//alert (image);
-						  $(".group2").colorbox({width:"80%", height:"80%", iframe:true, href:image});
-						  
-						  //
-						}
-						</script>
 						
-						
-                                                <td> 
-                                                <a class='group2' href='#create-your-shirt' onclick='lightbox("<?php echo $result_tecidos['imageBig']; ?>")'>
-							<img src=" <?php echo ($result_tecidos['image']); ?> " width='74' height='74'/></a>
+                                                <td>
+                                                <a id="<?php echo ('box' + $result_tecidos['idTecido']); ?>"
+								 class='group2' href='#create-your-shirt'
+								 data-img="<?php echo $result_tecidos['imageBig']; ?>">
+							<img src=" <?php echo ($result_tecidos['image']); ?>"
+									 width='74' height='74'
+									 /></a>
 						</td>
-                                                
+
 						<?php
                                                 if ((($counter+1) % 3) == 0){
                                                 echo "</tr>";
                                                 }
-                                                
+
                                             $counter ++;
-                                                
+
                                             }
-                                            
+
                                             ?>
+						
+					<script>
+						$("a.group2").on("dblclick", function (event){
+							$.colorbox({href:event.currentTarget.getAttribute('data-img')})	
+						  //$(".group2").colorbox({width:"80%", height:"80%", iframe:true, href:image});
+						   //$(event.currentTarget).colorbox({href:event.target.getAttribute('data-img'), overlayClose: false});
+						   //event.stopImmediatePropagation();
+						   //return false;
+						});
+						//$(function(){
+						//	$('a.group2').map(function() {
+						//		var idImagem = $('#'+this.id);
+						//		idImagem.colorbox({href:idImagem.attr('data-img')});
+						//	      });
+						//});
+					//	$(document).on("a.group2", function (event){
+					//		alert (event.target.getAttribute(event));
+						  //$(".group2").colorbox({width:"80%", height:"80%", iframe:true, href:image});
+						   //$(event.currentTarget).colorbox({href:event.target.getAttribute('data-img'), overlayClose: false});
+						   //event.stopImmediatePropagation();
+						   //return false;
+					//	});
+						/*function lightbox(image){
+							//alert (image);
+						  //$(".group2").colorbox({width:"80%", height:"80%", iframe:true, href:image});
+						   $(".group2").colorbox({href:image, overlayClose: false});
+						}*/
+					</script>	
+						
                                       </table>
                                     </div>
                                     <div id="tabs-2">
                                       <p>Morbi tincidunt, dui sit amet facilisis feugiat,
                                       odio metus gravida ante, ut pharetra massa.</p>
                                     </div>
-                                </div>
+
+                                </div><!--fecha tabs_border-->
+                                <!--<div class="coverBlock"></div>-->
+                            </div><!--fecha tabs-->
+
+                            <div class="autoPriceText">
+	                            <span class="estimatedText">Your Estimated Price:</span><span class="estimatedPrice"> 78.00&euro;</span>
                             </div>
+                            <div class="autoPriceButton">
+								<input type="button" class="butaoenviar fontLight colorGold" value="ADD TO CART"/>
+	                            <input type="button" class="butaoenviar fontLight" value="CHECKOUT"/>
+                            </div>
+                            <div class="clearer"></div>
                         </div>
                         <div class="clearer"></div>
-				
-				
+
+
 			    </div>
-                        </li>    
+                        </li>
                         <li class="list-slide">
                             <div class="banner-slide">
 				<div class="blocoLeft_costumerPage">
@@ -855,7 +927,7 @@
 							<input type="hidden" name="form[from]"  value="message"/></form>
 					</div>
 				</div>
-				
+
 				<div class="blocoCenter_costumerPage">
 					<div class="costumer_contact">
 						<div class="contactostitle">How to measure</div>
@@ -875,7 +947,7 @@
 						</div>
 					</div>
 				</div>
-				
+
 				<div class="blocoRight_costumerPage">
 					<div class="costumer_contact">
 						<div class="costumerImage">
@@ -883,27 +955,27 @@
 						</div>
 					</div>
 				</div>
-				
+
 			    </div>
-                        </li>    
+                        </li>
                         <li class="list-slide">
                             <div class="banner-slide">
 				<div class="blocoLeft">
 					<div class="titleYourCustom">Your custom Shirt</div>
-					
+
 					<img src="images/limited_left.png" width="178"/>
 				</div>
-				
+
 				<div class="blocoLeft">
-					
+
 					<img class="limitedMid" src="images/limited_center.png" width="348"/>
 				</div>
-				
+
 			    </div>
-                        </li>    
+                        </li>
                         <li class="list-slide">
                             <div class="banner-slide">
-			
+
 				<div class="blocoLeft_RCC">
 					<div class="costumer_contact">
 						<div class="contactostitle">RCC experience</div>
@@ -950,7 +1022,7 @@
 						</div>
 					</div>
 				</div>
-				
+
 				<div class="blocoRight_RCC">
 					<div class="costumer_contact">
 						<div class="costumerImage">
@@ -959,21 +1031,21 @@
 					</div>
 				</div>
 			    </div>
-                        </li>    
+                        </li>
                     </ul>
-                    
+
                 </div>
-                                                
-    </div> 
-                        
-                        
+
+    </div>
+
+
                     </div><!-- createContainer-->
                 </div><!-- container-->
             </div><!-- conteudo-->
         </div><!-- pageholder-->
     </div><!--viewport-->
 
-		
+
 		<div class="subViewPort">
 			<div class="pageHolder">
 				<div class="grayBar">
@@ -1030,8 +1102,38 @@
 				</div>
 			</div>
 		</div>
-	    
-	
+
+			       <div class="subViewPort">
+                    	<div class="pageHolder">
+	                        <div class="grayBar">
+	                            <div class="grayBarTitle">
+	                                <span class="firstWord">My</span>
+	                                <span class="secondWord">cart</span>
+	                            </div>
+	                        </div>
+	                        <div class="conteudo">
+	                            <div class="container">
+	                                <div class="loginContainer">
+	                                    <div class="cartLeft">
+											<span class="titleCart">My ACCOUNT </span>
+											<span class="cartText">profile</span>
+
+										<hr/>
+
+					    				</div>
+
+									    <div class="cartRight">
+
+										</div>
+
+
+									</div>
+				    			</div>
+							</div>
+		    			</div>
+					</div>
+
+
 	       <div class="subViewPort">
                     <div class="pageHolder">
                         <div class="grayBar">
@@ -1049,46 +1151,92 @@
 						<span class="login_title">What is your email adress?</span><br/>
 						<span class="login_text">My email adress is:</span>
 						<input class="login_input" id="loginEmail" type="text"/>
-						
+
 					</fieldset>
-					
+
 					<fieldset>
 						<span class="login_title">Do you have an RCC password?</span><br/>
 						<span class="login_text">Yes, I have a password:</span>
 						<input class="login_input" id="loginPassword" type="password"/>
 						<br/>
 						<a class="forgot" href="#">Forgot your password?</a>
-						
+
 					</fieldset>
 					<div class="clearer"></div>
 					<fieldset>
 						<input class="butaoEnviar" type="button" value="SUBMIT"/>
 					</fieldset>
-					
-					
+
+
 					<span class="titleLogin">Sign In Help</span>
 					<br/>
 					<br/>
 					<span class="login_text">Forgot your password?</span>
 					<a class="login_text" href="">Get password help.</a>
-					
+
 				    </div>
-                                    
-				    <div class="loginRight"></div>
+
+				    <div class="loginRight">
+				    	<span class="titleLogin">Registration</span>
+					<br/>
+					<br/>
+					<span class="login_title">New to RCC.pt? Register Below</span>
+
+					<fieldset class="firstField">
+
+						<span class="login_text">My name is:</span>
+						<input class="login_input" id="registerName" type="text"/>
+					</fieldset>
+
+					<fieldset>
+						<span class="login_text">My email address is:</span>
+						<input class="login_input" id="registerEmail" type="text"/>
+					</fieldset>
+
+					<fieldset>
+						<span class="login_text">Type it again:</span>
+						<input class="login_input" id="registerEmailV" type="text"/>
+					</fieldset>
+
+
+					<div class="clearer"></div>
+					<br/>
+					<span class="login_title">Protect your information with a password</span><br/>
+					<span class="login_text">This will be your only RCC.pt password.</span>
+
+					<fieldset class="firstField">
+						<span class="login_text">Enter a new password:</span>
+						<input class="login_input" id="registerPassword" type="password"/>
+					</fieldset>
+
+					<fieldset>
+						<span class="login_text">Type it again:</span>
+						<input class="login_input" id="registerPasswordV" type="password"/>
+					</fieldset>
+
+					<div class="clearer"></div>
+					<fieldset>
+						<input class="butaoEnviar" type="button" value="CREATE ACCOUNT"/>
+					</fieldset>
+
+					</div>
 				    <div class="clearer"></div>
-				    
+
 				</div>
 			    </div>
 			</div>
-			
+
 			<script type="text/javascript">
 				setPostInit('0');
 				numPosts=2
 			</script>
-			
+
 		    </div>
 		</div>
-	    
+
+
+
+
 	    </div>
 <div class="arrowContender"><div class="imgArrowTop"><a href="javascript:void(0)" onClick="arrowClick('up')" class="topArrow arrowUp"></a></div><div class="imgArrowBottom"><a href="javascript:void(0)" onClick="arrowClick('down')" class="topArrow arrowDown"></a></div></div>
 <!-- FOOTER -->
