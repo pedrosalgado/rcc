@@ -1211,7 +1211,7 @@ padding-left: 1px;
 .ui-state-active,
 .ui-widget-content .ui-state-active,
 .ui-widget-header .ui-state-active {
-	border: 1px solid #aaaaaa;
+	border: 1px solid #9f7d45;
 	background: #ffffff;
 	font-weight: normal;
 	color: #9f7d45;
@@ -1559,13 +1559,13 @@ li.pager{
 	display: inline-block;
 }
 
-.previewTitle{
+.previewTitle, .myListTitle{
 	margin-left: 105px;
 }
 
 .cartContainer input[type=text]{
 	font-family:'Droid Serif Italic';
-	width: 160px;
+	width: 184px;
 	padding: 0px 1px;
 }
 
@@ -1583,6 +1583,11 @@ li.pager{
 	float:left;
 	width: 300px;
 	padding: 1px;
+}
+
+
+.cartLeft .hide{
+	display:none;
 }
 
 .cartText{
@@ -1605,6 +1610,8 @@ li.pager{
 
 .cartCenter .bx-prev, .cartCenter .bx-next{
 	top: 122% !important;
+	margin-left: 80px;
+	margin-right: 80px;
 }
 
 .cartCenter .bx-window{
@@ -1619,6 +1626,17 @@ li.pager{
 	width:260px;
 	min-height:366px;
 	padding: 1px;
+}
+
+.basketContent{
+	height:266px;
+	overflow:auto;
+	position:relative;
+}
+
+.basketText{
+	position: absolute;
+	bottom: 4px;
 }
 
 .editable{
@@ -1643,7 +1661,7 @@ li.pager{
 /*my list*/
 
 .camisaPreview{
-	margin: 40px auto;
+	margin: 45px auto;
 	width: 202px;
 }
 
@@ -1651,19 +1669,6 @@ li.pager{
 .myListRight .bx-window{
 	height: 194px !important;
 
-}
-
-#tabsMyRcc li{
-	font-size: 15px;
-}
-
-#tabsMyRcc{
-	border: 1px solid #9f7d45 !important;
-	height: 386px;
-}
-
-#tabsMyRcc .ui-tabs{
-	padding: 0;
 }
 
 
@@ -1676,16 +1681,20 @@ li.pager{
 
 .myListRight .bx-wrapper{
 	width: 290px !important;
-	margin: 44px auto;
+	margin: 48px auto;
 }
 
 .myListRight{
 	float:left;
 	width:300px;
-	min-height:372px;
+	height:388px;
 	padding: 1px;
 	border: 1px solid #9f7d45;
 	margin-left: 14px;
+}
+
+.englobaListRight{
+	margin-bottom:44px;
 }
 
 .favSlider img{
@@ -1699,6 +1708,84 @@ li.pager{
 
 
 .myListRight .bx-prev, .myListRight .bx-next{
-	top: 126% !important;
+	top: 129% !important;
+	margin-left: 80px;
+	margin-right: 80px;
 }
 
+/*RCC Tabs*/
+
+#tabsMyRcc .ui-tabs-nav{
+	padding: 0;
+	width:100%;
+
+}
+
+#tabsMyRcc .ui-widget-header{
+	border-bottom: 1px solid #9f7d45;
+	margin-bottom: 12px;
+}
+
+#tabsMyRcc .ui-tabs-nav li a{
+	padding-top:2px;
+	padding-bottom:2px;
+}
+
+#tabsMyRcc .ui-tabs-nav li a:last-child{
+	width:106px;
+}
+
+#tabsMyRcc .ui-tabs{
+	padding: 0;
+}
+
+#tabsMyRcc li{
+	font-size: 15px;
+	border-top: 0px;
+}
+
+#tabsMyRcc li:last-child{
+	float: right;
+	margin-right: 0;
+	border-right: 0;
+	width: 136px;
+}
+
+#tabsMyRcc ul li{
+	margin-top: 0;
+}
+
+#tabsMyRcc .ui-state-hover:last-child{
+	border-left: 1px solid #9f7d45 !important;
+}
+
+#tabsMyRcc .ui-state-hover:first-child{
+	border-right: 1px solid #9f7d45 !important;
+}
+
+#tabsMyRcc .ui-state-hover a, #tabsMyRcc .ui-tabs-active a{
+	color: #9f7d45 !important;
+	background:#fff !important;
+	border-left: 0;
+}
+
+#tabsMyRcc .ui-state-default a{
+	color: #fff;
+	background:#979797;
+}
+
+#tabsMyRcc li:first-child{
+	border-left: 0px;
+}
+
+
+#tabsMyRcc{
+	border: 1px solid #9f7d45 !important;
+	height: 390px;
+	padding: 0;
+
+}
+
+#myFav, #yourBought{
+	padding: 2px;
+}

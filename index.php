@@ -249,7 +249,7 @@
                             <span class="preWord">Contact</span> Us</a>
                     </div>
                     <script type="text/javascript">
-			var arrayPags = new Array();
+				var arrayPags = new Array();
 				arrayPags['#homepage']=0;
                 arrayPags['#our-story']=1;
                 arrayPags['#behind-the-scenes']=2;
@@ -260,7 +260,8 @@
                 arrayPags['#my-cart']=7;
                 arrayPags['#my-rcc']=8;
 				arrayPags['#my-login']=9;
-			var countPages = 10;
+				arrayPags['#my-buy']=10;
+				var countPages = 11;
 		    </script>
                     <div class="clearer"></div>
                     <div class="boxMenu"></div>
@@ -1213,53 +1214,59 @@
 	                        <div class="conteudo">
 	                            <div class="container">
 	                                <div class="cartContainer">
-	                                    <div class="cartLeft">
+	                                     <div class="cartLeft">
+
+	                                    <?php
+										$query_client = mysql_query("Select * From client where idClient = 1");
+										$result_client = mysql_fetch_array($query_client);
+										?>
+
 											<span class="big gold divTitle">My ACCOUNT </span>
 											<span class="cartText">profile</span>
 
 										<hr/>
 
-										<img src="client/rcc_face.png"/>
+										<img src="<?php echo $result_client['photo']; ?>"/>
 
 										<fieldset>
 											<span class="gold big">Mr.</span>
-											<input class="clientData big locked" type="text" readonly value="Miguel Figueiredo"/>
+											<input class="clientData big locked" type="text" readonly value="<?php echo $result_client['name']; ?>"/>
 										</fieldset>
 
 										<fieldset>
 											<span class="gold">My e-mail address:</span>
-											<input class="clientData locked" type="text" readonly value="emejkekje"/>
+											<input class="clientData locked" type="text" readonly value="<?php echo $result_client['email']; ?>"/>
 										</fieldset>
 
 										<fieldset>
 											<span class="gold">Address Line:</span>
-											<input class="clientData locked" type="text" readonly value="emejkekje"/>
+											<input class="clientData locked" type="text" readonly value="<?php echo $result_client['address']; ?>"/>
 										</fieldset>
 
 										<fieldset>
 											<span class="gold">Town/City:</span>
-											<input class="clientData locked" type="text" readonly value="emejkekje"/>
+											<input class="clientData locked" type="text" readonly value="<?php echo $result_client['town']; ?>"/>
 										</fieldset>
 
 										<fieldset>
 											<span class="gold">Country:</span>
-											<input class="clientData locked" type="text" readonly value="emejkekje"/>
+											<input class="clientData locked" type="text" readonly value="<?php echo $result_client['country']; ?>"/>
 										</fieldset>
 
 										<fieldset>
 											<span class="gold">Postcode:</span>
-											<input class="clientData locked" type="text" readonly value="emejkekje"/>
+											<input class="clientData locked" type="text" readonly value="<?php echo $result_client['postcode']; ?>"/>
 										</fieldset>
 
 										<fieldset>
 											<span class="gold">Phone Number:</span>
-											<input class="clientData locked" type="text" readonly value="emejkekje"/>
+											<input class="clientData locked" type="text" readonly value="<?php echo $result_client['phoneNumber']; ?>"/>
 										</fieldset>
 										<!--Target text field: <input type="text" id="target" />-->
 										<br />
 										<!--<a href="#" id="control" />Disable target</a>-->
 										<input type="button" class=" edit butaoEnviar fontLight white" value="EDIT"/>
-										<input type="button" class=" edit butaoEnviar fontLight" value="SAVE"/>
+										<input type="button" class="save hide edit butaoEnviar fontLight" value="SAVE"/>
 
 					    				</div>
 					    				<script>
@@ -1269,6 +1276,7 @@
 										{
 										    $('.clientData').removeAttr("readonly");
 										    $('.clientData').removeClass('locked').addClass('editable');
+										 	$('.save').removeClass('hide').addClass('show');
 
 
 										},
@@ -1276,6 +1284,7 @@
 										{
 										    $('.clientData').attr("readonly", true);
 										    $('.clientData').addClass('locked').removeClass('editable');
+										    $('.save').removeClass('show').addClass('hide');
 										});
 										</script>
 
@@ -1298,9 +1307,13 @@
 										<div class="cartRight">
 											<span class="gold divTitle">Basket</span>
 											<hr/>
-											<p><span class="gold">Shirt's Name A: </span></p>
-											<p><span class="gold">Shirt's Name A: </span></p>
-											<p><span class="gold">Shirt's Name A: </span></p>
+												<div class="basketContent">
+													<div class="basketText">
+														<p><span class="gold">Shirt's Name A: </span></p>
+														<p><span class="gold">Shirt's Name B: </span></p>
+														<p><span class="gold">Shirt's Name C: </span></p>
+													</div>
+												</div>
 											<hr/>
 											<span class="gold">Your Estimated Price: </span>
 										</div>
@@ -1324,52 +1337,58 @@
 	                            <div class="container">
 	                                <div class="cartContainer">
 	                                    <div class="cartLeft">
+
+	                                    <?php
+											$query_client = mysql_query("Select * From client where idClient = 1");
+											$result_client = mysql_fetch_array($query_client);
+										?>
+
 											<span class="big gold divTitle">My ACCOUNT </span>
 											<span class="cartText">profile</span>
 
 										<hr/>
 
-										<img src="client/rcc_face.png"/>
+										<img src="<?php echo $result_client['photo']; ?>"/>
 
 										<fieldset>
 											<span class="gold big">Mr.</span>
-											<input class="clientData big locked" type="text" readonly value="Miguel Figueiredo"/>
+											<input class="clientData big locked" type="text" readonly value="<?php echo $result_client['name']; ?>"/>
 										</fieldset>
 
 										<fieldset>
 											<span class="gold">My e-mail address:</span>
-											<input class="clientData locked" type="text" readonly value="emejkekje"/>
+											<input class="clientData locked" type="text" readonly value="<?php echo $result_client['email']; ?>"/>
 										</fieldset>
 
 										<fieldset>
 											<span class="gold">Address Line:</span>
-											<input class="clientData locked" type="text" readonly value="emejkekje"/>
+											<input class="clientData locked" type="text" readonly value="<?php echo $result_client['address']; ?>"/>
 										</fieldset>
 
 										<fieldset>
 											<span class="gold">Town/City:</span>
-											<input class="clientData locked" type="text" readonly value="emejkekje"/>
+											<input class="clientData locked" type="text" readonly value="<?php echo $result_client['town']; ?>"/>
 										</fieldset>
 
 										<fieldset>
 											<span class="gold">Country:</span>
-											<input class="clientData locked" type="text" readonly value="emejkekje"/>
+											<input class="clientData locked" type="text" readonly value="<?php echo $result_client['country']; ?>"/>
 										</fieldset>
 
 										<fieldset>
 											<span class="gold">Postcode:</span>
-											<input class="clientData locked" type="text" readonly value="emejkekje"/>
+											<input class="clientData locked" type="text" readonly value="<?php echo $result_client['postcode']; ?>"/>
 										</fieldset>
 
 										<fieldset>
 											<span class="gold">Phone Number:</span>
-											<input class="clientData locked" type="text" readonly value="emejkekje"/>
+											<input class="clientData locked" type="text" readonly value="<?php echo $result_client['phoneNumber']; ?>"/>
 										</fieldset>
 										<!--Target text field: <input type="text" id="target" />-->
 										<br />
 										<!--<a href="#" id="control" />Disable target</a>-->
 										<input type="button" class=" edit butaoEnviar fontLight white" value="EDIT"/>
-										<input type="button" class=" edit butaoEnviar fontLight" value="SAVE"/>
+										<input type="button" class="save hide edit butaoEnviar fontLight" value="SAVE"/>
 
 					    				</div>
 					    				<script>
@@ -1379,6 +1398,7 @@
 										{
 										    $('.clientData').removeAttr("readonly");
 										    $('.clientData').removeClass('locked').addClass('editable');
+										 	$('.save').removeClass('hide').addClass('show');
 
 
 										},
@@ -1386,57 +1406,97 @@
 										{
 										    $('.clientData').attr("readonly", true);
 										    $('.clientData').addClass('locked').removeClass('editable');
+										    $('.save').removeClass('show').addClass('hide');
 										});
 										</script>
+
+
+				<script>
+
+
+				function testeFavBought(str){
+					alert(str);
+				}
+
+
+				function showFavBought(str)
+				{
+				if (str=="")
+				  {
+				  document.getElementById("fav_bought").innerHTML="";
+				  return;
+				  }
+				if (window.XMLHttpRequest)
+				  {// code for IE7+, Firefox, Chrome, Opera, Safari
+				  xmlhttp=new XMLHttpRequest();
+				  }
+				else
+				  {// code for IE6, IE5
+				  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+				  }
+				xmlhttp.onreadystatechange=function()
+				  {
+				  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+				    {
+				    document.getElementById("fav_bought").innerHTML=xmlhttp.responseText;
+				    }
+				  }
+				xmlhttp.open("GET","getfavBought.php?q="+str,true);
+				xmlhttp.send();
+				}
+
+				</script>
 
 											<div class="myListCenter">
 												<div class="previewBorder">
 
 													<div  id="tabsMyRcc">
 						                                <ul>
-						                                  <li><a href="#myFav">Your Favorites</a></li>
-						                                  <li><a href="#yourBought">Your Bought</a></li>
+						                                  <li><a href="#myFav" onclick="showFavBought('fav');">Your Favorites</a></li>
+						                                  <li><a href="#yourBought" onclick="showFavBought('bought');">Your Bought</a></li>
 						                                </ul>
                                 						<!--<div class="tabs_border">-->
 
 
 
                         								<div id="myFav">
-
+														<hr/>
 	                        								<div class="camisaPreview">
 																<img src="products/camisa_list1.jpg" name="mainPic" class="mainImage" width="200px" height="200px">
 															</div>
-                    									</div>
-
-
+                    									<hr/>
+														</div>
 
 					                                    <div id="yourBought">
-					                                      <p>Morbi tincidunt, dui sit amet facilisis feugiat,
-					                                      odio metus gravida ante, ut pharetra massa.</p>
-					                                    </div>
+					                                    <hr/>
+	                        								<div class="camisaPreview">
+																<img src="products/camisa_list1.jpg" name="mainPic2" class="mainImage" width="200px" height="200px">
+															</div>
+                    									<hr/>
+														</div>
 
                                 						<!--</div><!--fecha tabs_border-->
 						                                <!--<div class="coverBlock"></div>-->
 						                            </div><!--fecha tabs-->
-													<hr/>
+
 												</div>
 										</div>
 
-										<?php
-											$query_list = mysql_query('select * from product');
-
-											 $counter3 = 0;
-										?>
-
-
 										<div class="myListRight">
-											<span class="gold divTitle">Basket</span>
+										<div class="englobaListRight">
+											<span class="gold myListTitle divTitle">My List</span>
 											<hr/>
 
 											<div class="contentList">
-												<ul class="favSlider">
+												<ul id="fav_bought" class="favSlider">
 
 												<?php
+
+													$query_list= mysql_query("SELECT * FROM favourites F, product P
+																				Where F.idProduct = P.idProduct");
+
+													$counter3 = 0;
+
 													while($result_list = mysql_fetch_array($query_list))
 														{
 
@@ -1470,12 +1530,30 @@
     											document.mainPic.src = camisa;
     											return false;
     										}
+
+    										function changeImg2(camisa){
+    											document.mainPic2.src = camisa;
+    											return false;
+    										}
 											</script>
 
 											<hr/>
 
 										</div>
-										<div class="clearer"></div>
+
+
+										<div class="autoPriceText">
+				                            <span class="estimatedText">Your Estimated Price:</span><span class="estimatedPrice"> 78.00&euro;</span>
+			                            </div>
+			                            <div class="autoPriceButton">
+											<input type="button" class="butaoenviar fontLight colorGold" value="ADD TO CART"/>
+				                            <input type="button" class="butaoenviar fontLight" value="CHECKOUT"/>
+			                            </div>
+			                            <div class="clearer"></div>
+			                        	</div>
+			                        	<div class="clearer"></div>
+									</div>
+
 									</div>
 				    			</div>
 							</div>
@@ -1577,16 +1655,113 @@
 			    </div>
 			</div>
 
-			<script type="text/javascript">
-				setPostInit('0');
-				numPosts=2
-			</script>
+
 
 		    </div>
 		</div>
 
 
+			       <div class="subViewPort">
+                    <div class="pageHolder">
+                        <div class="grayBar">
+                            <div class="grayBarTitle">
+                                <span class="firstWord">My</span>
+                                <span class="secondWord">Buy</span>
+                            </div></div>
+                        <div class="conteudo">
+                            <div class="container">
+                                <div class="loginContainer">
+                                    <div class="loginLeft">
+					<span class="titleLogin">Sign In</span>
+					<br/>
+					<fieldset>
+						<span class="login_title">What is your email adress?</span><br/>
+						<span class="login_text">My email adress is:</span>
+						<input class="login_input" id="loginEmail" type="text"/>
 
+					</fieldset>
+
+					<fieldset>
+						<span class="login_title">Do you have an RCC password?</span><br/>
+						<span class="login_text">Yes, I have a password:</span>
+						<input class="login_input" id="loginPassword" type="password"/>
+						<br/>
+						<a class="forgot" href="#">Forgot your password?</a>
+
+					</fieldset>
+					<div class="clearer"></div>
+					<fieldset>
+						<input class="butaoEnviar" type="button" value="SUBMIT"/>
+					</fieldset>
+
+
+					<span class="titleLogin">Sign In Help</span>
+					<br/>
+					<br/>
+					<span class="login_text">Forgot your password?</span>
+					<a class="login_text" href="">Get password help.</a>
+
+				    </div>
+
+				    <div class="loginRight">
+				    	<span class="titleLogin">Registration</span>
+					<br/>
+					<br/>
+					<span class="login_title">New to RCC.pt? Register Below</span>
+
+					<fieldset class="firstField">
+
+						<span class="login_text">My name is:</span>
+						<input class="login_input" id="registerName" type="text"/>
+					</fieldset>
+
+					<fieldset>
+						<span class="login_text">My email address is:</span>
+						<input class="login_input" id="registerEmail" type="text"/>
+					</fieldset>
+
+					<fieldset>
+						<span class="login_text">Type it again:</span>
+						<input class="login_input" id="registerEmailV" type="text"/>
+					</fieldset>
+
+
+					<div class="clearer"></div>
+					<br/>
+					<span class="login_title">Protect your information with a password</span><br/>
+					<span class="login_text">This will be your only RCC.pt password.</span>
+
+					<fieldset class="firstField">
+						<span class="login_text">Enter a new password:</span>
+						<input class="login_input" id="registerPassword" type="password"/>
+					</fieldset>
+
+					<fieldset>
+						<span class="login_text">Type it again:</span>
+						<input class="login_input" id="registerPasswordV" type="password"/>
+					</fieldset>
+
+					<div class="clearer"></div>
+					<fieldset>
+						<input class="butaoEnviar" type="button" value="CREATE ACCOUNT"/>
+					</fieldset>
+
+					</div>
+				    <div class="clearer"></div>
+
+					</div>
+			    	</div>
+				</div>
+		    </div>
+		</div>
+
+
+
+
+<script type="text/javascript">
+				setPostInit('0');
+				numPosts=2
+</script>
 
 	    </div>
 <div class="arrowContender"><div class="imgArrowTop"><a href="javascript:void(0)" onClick="arrowClick('up')" class="topArrow arrowUp"></a></div><div class="imgArrowBottom"><a href="javascript:void(0)" onClick="arrowClick('down')" class="topArrow arrowDown"></a></div></div>
