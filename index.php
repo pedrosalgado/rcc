@@ -64,44 +64,32 @@
 	</script>
 
 	<script>
+	var sliderFav;
+	$(function(){
+		sliderFav = $('.favSlider').bxSlider({
+        	mode:'fade',
+        	auto: false,
+        	pager: true,
+        	pagerType:'short',
+	  		infiniteLoop: false
+		});
+	});
+
+	</script>
+
+	<script>
         $(document).ready(function() {
 
 
-        $('.favSlider').bxSlider({
-        	mode:'fade',
-        	auto: false
-		});
-
-        //function insertCount(curr,count){
-		//	$('#slide-counter').html('<strong>'+ (curr + 1) +'</strong>/'+ count);
-		//};
-
         var slideCart = $('.cartSlider').bxSlider({
-			  mode: 'fade',
-			  auto: false,
-			  adaptiveHeight: true,
-
-			onSliderLoad: function (){
-			var count = slideCart.getSlideCount();
-			var curr = slideCart.getCurrentSlide();
-			insertCount(curr,count);
-			$('#slide_counter').html(count);
-			},
-
-			onSlideNext: function (){
-			var count = slideCart.getSlideCount();
-			var curr = slideCart.getCurrentSlide();
-			insertCount(curr,count);
-			},
-			onSlidePrev: function (){
-			var count = slideCart.getSlideCount();
-			var curr = slideCart.getCurrentSlide();
-			insertCount(curr,count);
-			}
-
-
-
+			 mode:'fade',
+        	auto: false,
+        	pager: true,
+        	pagerType:'short',
+	  		infiniteLoop: false
 			});
+
+
 
 			//var count = slideCart.getSlideCount();
 
@@ -120,8 +108,6 @@
 				$('ul', this).stop().slideUp(100);
 			}
 			);
-
-
 
 		// assign the slider to a variable
 		var slider = $('#banner-slider').bxSlider({
@@ -261,7 +247,8 @@
                 arrayPags['#my-rcc']=8;
 				arrayPags['#my-login']=9;
 				arrayPags['#my-buy']=10;
-				var countPages = 11;
+				arrayPags['#thank-you']=11;
+				var countPages = 12;
 		    </script>
                     <div class="clearer"></div>
                     <div class="boxMenu"></div>
@@ -939,13 +926,13 @@
 
 									</div>
 
-                                <div class="tabs_border jscroll">
+                                <div class="tabs_border">
 
 
 
                         <div id="tabs-1">
 
-                        <table>
+
 
                         <?php
 
@@ -954,19 +941,19 @@
                             while ($result_tecidos = mysql_fetch_array($query_tecidos))
                             {
                             	if (($counter % 3) == 0){
-                                echo "<tr>";
+                                echo "<div>";
                             }
 						?>
 
 
-                        <td>
-                        <a class='group2' href='#create-your-shirt' ondblclick="callColor()" data-img="<?php echo $result_tecidos['imageBig']; ?>">
-						<img src=" <?php echo ($result_tecidos['image']); ?> " width='74' height='74'/></a>
-						</td>
+
+                        <a class='group2' href='#create-your-shirt' ondblclick="callColor('<?php echo $result_tecidos['nomeTecido'];?>')" data-img="<?php echo $result_tecidos['imageBig']; ?>">
+						<img class="listTecido" id="<?php echo $result_tecidos['idTecido'];?>" src=" <?php echo ($result_tecidos['image']); ?> " width='74' height='74'/></a>
+
 
 						<?php
                             if ((($counter+1) % 3) == 0){
-                            echo "</tr>";
+                            echo "</div>";
                             }
 
                             $counter ++;
@@ -974,18 +961,27 @@
                         }
 
                         ?>
-                      </table>
 
-                      <script>
-                      function callColor(){
-                      	$.colorbox({href:event.currentTarget.getAttribute('data-img')})
+
+
+
+                    </div>
+
+                    <script>
+                      function selectPattern(tecido){
+                      		$('.listtecido').removeClass('selected');
+    						$('#'+ tecido +'').addClass('selected');
+
+    						alert(tecido);
+					  }
+
+                      function callColor(nome){
+                      	$.colorbox({href:event.currentTarget.getAttribute('data-img'), title:nome})
 					  }
 					     //$("a.group2").on("click", function(event){
 					     	//$.colorbox({href:event.currentTarget.getAttribute('data-img')})
 						 //});
 						</script>
-
-                    </div>
 
 
 
@@ -1412,12 +1408,13 @@
 
 
 				<script>
-
-
-				function testeFavBought(str){
-					alert(str);
+				function showAddCart(){
+					$('.showHide').removeClass('hide').addClass('show');
 				}
 
+				function removeAddCart(){
+					$('.showHide').removeClass('show').addClass('hide');
+				}
 
 				function showFavBought(str)
 				{
@@ -1443,6 +1440,7 @@
 				  }
 				xmlhttp.open("GET","getfavBought.php?q="+str,true);
 				xmlhttp.send();
+
 				}
 
 				</script>
@@ -1452,8 +1450,8 @@
 
 													<div  id="tabsMyRcc">
 						                                <ul>
-						                                  <li><a href="#myFav" onclick="showFavBought('fav');">Your Favorites</a></li>
-						                                  <li><a href="#yourBought" onclick="showFavBought('bought');">Your Bought</a></li>
+						                                  <li><a id="favClick" href="#myFav" onclick="showFavBought('fav'); showAddCart();">Your Favorites</a></li>
+						                                  <li><a href="#yourBought" onclick="showFavBought('bought'); removeAddCart();">Your Bought</a></li>
 						                                </ul>
                                 						<!--<div class="tabs_border">-->
 
@@ -1506,20 +1504,15 @@
 
 												?>
 
-													<a href="javascript:void(0)" onclick="changeImg('<?php echo $result_list['image'];?>')" >
-													<img src="<?php echo $result_list['image'];?>" width="90" height="90"/></a>
-
-
+													<a href="javascript:void(0)" onclick="changeImg('<?php echo $result_list['image'];?>'); selectCamisa('shirt'+'<?php echo $result_list['idFavourites'];?>');" >
+													<img class="listCamisa" id="shirt<?php echo $result_list['idFavourites'];?>" src="<?php echo $result_list['image'];?>" width="90" height="90"/></a>
 
 												<?php
-
 														if ((($counter3 + 1)% 6) == 0)
 														{
 															echo "</li>";
 														}
 														$counter3 ++;
-
-
 													}
 												?>
 												</ul>
@@ -1535,13 +1528,19 @@
     											document.mainPic2.src = camisa;
     											return false;
     										}
+
+    										function selectCamisa(camisa){
+    										$('.listCamisa').removeClass('selected');
+    											$('#'+ camisa +'').addClass('selected');
+
+											}
 											</script>
 
 											<hr/>
 
 										</div>
 
-
+										<div class="showHide">
 										<div class="autoPriceText">
 				                            <span class="estimatedText">Your Estimated Price:</span><span class="estimatedPrice"> 78.00&euro;</span>
 			                            </div>
@@ -1550,9 +1549,10 @@
 				                            <input type="button" class="butaoenviar fontLight" value="CHECKOUT"/>
 			                            </div>
 			                            <div class="clearer"></div>
-			                        	</div>
-			                        	<div class="clearer"></div>
-									</div>
+			                            </div>
+			                        </div>
+			                        <div class="clearer"></div>
+								</div>
 
 									</div>
 				    			</div>
@@ -1671,80 +1671,65 @@
                         <div class="conteudo">
                             <div class="container">
                                 <div class="loginContainer">
-                                    <div class="loginLeft">
-					<span class="titleLogin">Sign In</span>
+                                    <div class="buyLeft">
+					<span class="titleLogin">Delivery address</span>
 					<br/>
-					<fieldset>
-						<span class="login_title">What is your email adress?</span><br/>
-						<span class="login_text">My email adress is:</span>
-						<input class="login_input" id="loginEmail" type="text"/>
 
-					</fieldset>
+					<div class="subBuyRight">
+						<input class="buyInput" id="" type="text"/>
+						<input class="buyInput" id="" type="text"/>
+						<input class="buyInput" id="" type="text"/>
+						<input class="buyInput smallerInput" id="" type="text"/>
+						<input class="buyInput smallestInput" id="" type="text"/>
+						<input class="buyInput smallestInput" id="" type="text"/>
+						<input class="buyInput smallestInput" id="" type="text"/>
 
-					<fieldset>
-						<span class="login_title">Do you have an RCC password?</span><br/>
-						<span class="login_text">Yes, I have a password:</span>
-						<input class="login_input" id="loginPassword" type="password"/>
 						<br/>
-						<a class="forgot" href="#">Forgot your password?</a>
-
-					</fieldset>
-					<div class="clearer"></div>
+						<br/>
 					<fieldset>
-						<input class="butaoEnviar" type="button" value="SUBMIT"/>
+						<input class="butaoEnviar" type="button" value="CONTINUE"/>
 					</fieldset>
 
+					</div>
 
-					<span class="titleLogin">Sign In Help</span>
-					<br/>
-					<br/>
-					<span class="login_text">Forgot your password?</span>
-					<a class="login_text" href="">Get password help.</a>
+					<div class="subBuyLeft">
+						<p class="buyText">Full Name: </p>
+						<p class="buyText">Address Line 1: </p>
+						<p class="buyText">Address Line 2:</p>
+						<p class="buyText">Town/City:</p>
+						<p class="buyText">Country:</p>
+						<p class="buyText">Postcode:</p>
+						<p class="buyText">Phone Number:</p>
+					</div>
+
+					<div class="clearer"></div>
+
+
 
 				    </div>
 
-				    <div class="loginRight">
-				    	<span class="titleLogin">Registration</span>
+				    <div class="buyRight">
+				    	<span class="titleLogin">Pay</span>
 					<br/>
 					<br/>
-					<span class="login_title">New to RCC.pt? Register Below</span>
 
-					<fieldset class="firstField">
+						<div class="buyFormPay">
 
-						<span class="login_text">My name is:</span>
-						<input class="login_input" id="registerName" type="text"/>
-					</fieldset>
+							<div class="buyRadio">
+								<input type="radio" name="payment" value="paypal"/>
+								<img src="images/paypal.png"/>
+							</div>
 
-					<fieldset>
-						<span class="login_text">My email address is:</span>
-						<input class="login_input" id="registerEmail" type="text"/>
-					</fieldset>
+							<div class="buyRadio">
+								<input type="radio" name="payment" value="visa"/>
+								<img src="images/visa.png"/>
+							</div>
 
-					<fieldset>
-						<span class="login_text">Type it again:</span>
-						<input class="login_input" id="registerEmailV" type="text"/>
-					</fieldset>
-
-
-					<div class="clearer"></div>
-					<br/>
-					<span class="login_title">Protect your information with a password</span><br/>
-					<span class="login_text">This will be your only RCC.pt password.</span>
-
-					<fieldset class="firstField">
-						<span class="login_text">Enter a new password:</span>
-						<input class="login_input" id="registerPassword" type="password"/>
-					</fieldset>
-
-					<fieldset>
-						<span class="login_text">Type it again:</span>
-						<input class="login_input" id="registerPasswordV" type="password"/>
-					</fieldset>
-
-					<div class="clearer"></div>
-					<fieldset>
-						<input class="butaoEnviar" type="button" value="CREATE ACCOUNT"/>
-					</fieldset>
+							<div class="clearer"></div>
+							<fieldset>
+								<input class="butaoEnviar" type="button" value="CONFIRM"/>
+							</fieldset>
+						</div>
 
 					</div>
 				    <div class="clearer"></div>
@@ -1754,6 +1739,26 @@
 				</div>
 		    </div>
 		</div>
+
+
+					       <div class="subViewPort">
+                    <div class="pageHolder">
+                        <div class="grayBar">
+                            <div class="grayBarTitle">
+                                <span class="firstWord">Thank</span>
+                                <span class="secondWord">you</span>
+                            </div></div>
+                        <div class="conteudo">
+                            <div class="container">
+                                <div class="thankContainer">
+                                    <p>Payment successfully</p>
+                                    <p>Thanks for your preference.</p>
+								</div>
+						    	</div>
+							</div>
+					    </div>
+					</div>
+
 
 
 

@@ -777,7 +777,7 @@ button.ui-button::-moz-focus-inner {
 	display: block;
 	border-width: 0;
 	/*padding: 1em 1.4em;*/
-	padding: 2.3em 0.4em;
+	padding: 2.3em 0.4em 0 0.4em;
 	background: none;
 }
 
@@ -799,7 +799,6 @@ body .ui-tooltip {
 .tabs_border{
     border-left: 1px solid #aaaaaa;
     border-right: 1px solid #aaaaaa;
-    height: 230px;
     overflow: auto;
 	height:86.4%;
 }
@@ -813,7 +812,7 @@ body .ui-tooltip {
         border-right: 0;
 }
 .ui-widget-content a {
-	color: #222222/*{fcContent}*/;
+	/*color: #222222/*{fcContent}*/;
 }
 .ui-widget-header {
 	border: 1px solid #aaaaaa/*{borderColorHeader}*/;
@@ -824,7 +823,7 @@ body .ui-tooltip {
 	font-weight: bold;
 }
 .ui-widget-header a {
-	color: #222222/*{fcHeader}*/;
+	/*color: #222222/*{fcHeader}*/;
 }
 
 

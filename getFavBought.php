@@ -21,8 +21,8 @@ if($_GET['q'] == 'fav')
 
 		?>
 
-				<a href="javascript:void(0)" onclick="changeImg('<?php echo $result_list['image'];?>')" >
-				<img src="<?php echo $result_list['image'];?>" width="90" height="90"/></a>
+				<a href="javascript:void(0)" onclick="changeImg('<?php echo $result_list['image'];?>'); selectCamisa('shirt'+'<?php echo $result_list['idFavourites'];?>');" >
+				<img class="listCamisa" id="shirt<?php echo $result_list['idFavourites'];?>" src="<?php echo $result_list['image'];?>" width="90" height="90"/></a>
 
 <?php
 
@@ -56,8 +56,8 @@ elseif($_GET['q'] == 'bought')
 
 		?>
 
-				<a href="javascript:void(0)" onclick="changeImg2('<?php echo $result_list['image'];?>')" >
-				<img src="<?php echo $result_list['image'];?>" width="90" height="90"/></a>
+				<a href="javascript:void(0)" onclick="changeImg2('<?php echo $result_list['image'];?>');  selectCamisa('shirt'+'<?php echo $result_list['idBought'];?>');" >
+				<img class="listCamisa" id="shirt<?php echo $result_list['idBought'];?>" src="<?php echo $result_list['image'];?>" width="90" height="90"/></a>
 
 		<?php
 
@@ -71,8 +71,14 @@ elseif($_GET['q'] == 'bought')
 	}
 
 }
-
-
-
 ?>
 
+<script>
+	var sliderFav;
+	$(function(){
+		sliderFav = $('.favSlider').bxSlider({
+        	mode:'fade',
+        	auto: false
+		});
+	});
+	</script>

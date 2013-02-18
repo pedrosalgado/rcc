@@ -23,9 +23,6 @@ include('config.php');
 
 
 
-	<table>
-
-
 	<?php
 	$counter = 0;
 
@@ -33,25 +30,22 @@ include('config.php');
 	{
 
 	if (($counter % 3) == 0){
-		echo "<tr>";
+		echo "<div>";
 	}
 	?>
 
 
-        <td>
-        <a class='group2' href='#create-your-shirt' ondblclick="callColor()" data-img="<?php echo $result_tecidos['imageBig']; ?>">
-		<img src=" <?php echo ($result_tecidos['image']); ?> " width='74' height='74'/></a>
-		</td>
+
+        <a class='group2' href='#create-your-shirt' ondblclick="callColor('<?php echo $result_tecidos['nomeTecido'];?>')" data-img="<?php echo $result_tecidos['imageBig']; ?>">
+		<img class="listTecido" id="<?php echo $result_tecidos['idTecido'];?>" src=" <?php echo ($result_tecidos['image']); ?> " width='74' height='74'/></a>
+
 
 	<?php
 		if ((($counter+1) % 3) == 0){
-			echo "</tr>";
+			echo "</div>";
 		}
 
 		$counter ++;
 		}
 
-	//echo $_GET['q'];
-
 	?>
-      </table>

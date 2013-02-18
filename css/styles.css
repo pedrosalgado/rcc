@@ -573,16 +573,22 @@ strong, b {font-weight: bold;}
 	padding: 0;
 }
 
-#tabs table{
+/*
+#tabs div{
 	border-spacing: 2px !important;
 	border-collapse: separate !important;
 }
+*/
 
-#tabs table img{
-	margin: 2px;
+#tabs div img{
+	margin: 1px;
 }
 
-#tabs table img:hover{
+#tabs div img:hover{
+	outline: 2px solid #000;
+}
+
+#tabs .selected{
 	outline: 2px solid #000;
 }
 
@@ -1195,6 +1201,13 @@ padding-left: 1px;
 	text-decoration: none;
 }
 
+#tabs .ui-tabs-nav {
+	padding: 0.2em 0 0 0;
+}
+
+#tabs .ui-tabs-nav li:first-child {
+	/*margin-right:2em;*/
+}
 
 .ui-state-hover,
 .ui-widget-content .ui-state-hover,
@@ -1211,7 +1224,7 @@ padding-left: 1px;
 .ui-state-active,
 .ui-widget-content .ui-state-active,
 .ui-widget-header .ui-state-active {
-	border: 1px solid #9f7d45;
+	border: 1px solid #aaaaaa;
 	background: #ffffff;
 	font-weight: normal;
 	color: #9f7d45;
@@ -1226,8 +1239,8 @@ padding-left: 1px;
 	position: absolute;
 	z-index: 10;
 	background: #fff;
-	margin-left: 6px;
-	padding: 14px 14px 6px 6px;
+	margin-left: 2px;
+	padding: 14px 6px 6px 6px;
 	margin-bottom:4px;
 	font-family:'Droid Serif Italic';
 	font-size:11px;
@@ -1271,7 +1284,7 @@ padding-left: 1px;
 
 #nav li {
 	float:left;
-	width:70px;
+	width:72px;
 	background:#fff;
 	position:relative;
 	z-index:500;
@@ -1706,11 +1719,19 @@ li.pager{
 	outline: 2px solid #000;
 }
 
+.favSlider .selected{
+	outline: 2px solid #000;
+}
+
 
 .myListRight .bx-prev, .myListRight .bx-next{
 	top: 129% !important;
 	margin-left: 80px;
 	margin-right: 80px;
+}
+
+.myListRight .hide{
+	display:none;
 }
 
 /*RCC Tabs*/
@@ -1719,6 +1740,12 @@ li.pager{
 	padding: 0;
 	width:100%;
 
+}
+
+
+#tabsMyRcc .ui-state-active{
+	border-left: 1px solid #9f7d45;
+	border-right:1px solid #9f7d45;
 }
 
 #tabsMyRcc .ui-widget-header{
@@ -1788,4 +1815,78 @@ li.pager{
 
 #myFav, #yourBought{
 	padding: 2px;
+}
+
+
+/*My buy*/
+
+.buyLeft{
+	width: 505px;
+	float:left;
+}
+
+.buyRight{
+	float:left;
+	width: 400px;
+	margin-left: 40px;
+}
+
+.subBuyRight{
+	float: right;
+	width: 370px;
+}
+
+.subBuyLeft{
+	float: right;
+	line-height: 1.77em;
+	text-align: right;
+}
+
+.buyInput{
+	border: 1px #9f7d45 solid;
+	padding: 3px;
+	width: 346px;
+}
+
+.smallerInput{
+	width: 250px;
+}
+
+.smallestInput{
+	width: 190px;
+}
+
+.buyText{
+	padding-right: 10px;
+	font-family:'Droid Serif Italic';
+	font-size:12px;
+	color:#9f7d45;
+}
+
+.subBuyRight .butaoEnviar{
+	float:left;
+}
+
+.buyRadio{
+	width:100px;
+	float:left;
+}
+
+.buyRadio input[type="radio"]{
+	margin-left: 40px;
+}
+
+.buyFormPay{
+	margin-left: 30px;
+}
+
+.buyFormPay .butaoEnviar{
+	margin-top: 20px;
+}
+
+.thankContainer{
+	text-align: center;
+	font-family: droid serif italic;
+	font-size: 24px;
+	color:#9f7d45;
 }
