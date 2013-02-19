@@ -66,7 +66,7 @@
 	<script>
 	var sliderFav;
 	$(function(){
-		sliderFav = $('.favSlider').bxSlider({
+		sliderFav = $('#favSlide1 .favSlider').bxSlider({
         	mode:'fade',
         	auto: false,
         	pager: true,
@@ -1415,32 +1415,58 @@
 				function removeAddCart(){
 					$('.showHide').removeClass('show').addClass('hide');
 				}
-
+				
+				var boughtFlagLoaded = false;
+				
 				function showFavBought(str)
 				{
-				if (str=="")
-				  {
-				  document.getElementById("fav_bought").innerHTML="";
-				  return;
-				  }
-				if (window.XMLHttpRequest)
-				  {// code for IE7+, Firefox, Chrome, Opera, Safari
-				  xmlhttp=new XMLHttpRequest();
-				  }
+				if(!boughtFlagLoaded)
+				{
+								if (str=="")
+									{
+									document.getElementById("fav_bought").innerHTML="";
+									return;
+									}
+								if (window.XMLHttpRequest)
+									{// code for IE7+, Firefox, Chrome, Opera, Safari
+									xmlhttp=new XMLHttpRequest();
+									}
+								else
+									{// code for IE6, IE5
+									xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+									}
+								xmlhttp.onreadystatechange=function()
+									{
+									if (xmlhttp.readyState==4 && xmlhttp.status==200)
+										{
+										boughtFlagLoaded = true;
+										document.getElementById("favSlide2").innerHTML=xmlhttp.responseText;
+										$("#favSlide1").css('display','none');
+												
+												var sliderFav2 = $('#favSlide2 .favSlider').bxSlider({
+																mode:'fade',
+																auto: false,
+																pager: true,
+																pagerType:'short',
+															infiniteLoop: false
+													});   
+										}
+										$("#favSlide2").css('display','block');
+									}
+								xmlhttp.open("GET","getfavBought.php?q="+str,true);
+								xmlhttp.send();
+				}
 				else
-				  {// code for IE6, IE5
-				  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-				  }
-				xmlhttp.onreadystatechange=function()
-				  {
-				  if (xmlhttp.readyState==4 && xmlhttp.status==200)
-				    {
-				    document.getElementById("fav_bought").innerHTML=xmlhttp.responseText;
-				    }
-				  }
-				xmlhttp.open("GET","getfavBought.php?q="+str,true);
-				xmlhttp.send();
-
+				{
+								if (str == 'bought'){
+								$("#favSlide1").css('display','none');
+								$("#favSlide2").css('display','block');
+								}
+								else{
+											$("#favSlide2").css('display','none');
+								$("#favSlide1").css('display','block');	
+								}
+				}
 				}
 
 				</script>
@@ -1486,6 +1512,7 @@
 											<hr/>
 
 											<div class="contentList">
+												<div id="favSlide1">
 												<ul id="fav_bought" class="favSlider">
 
 												<?php
@@ -1516,6 +1543,9 @@
 													}
 												?>
 												</ul>
+												</div>
+												<div id="favSlide2" style="display: none;">
+												</div>
 											</div>
 
 											<script>
